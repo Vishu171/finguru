@@ -108,12 +108,15 @@ tab1, tab2, tab3 = st.tabs([
           
     )
 
-with st.sidebar:
+with st.sidebar:('''
+#JADE
+''')
+  
   
        from PIL import Image
-       #image = Image.open('/streamlit-buffett-main/assets/Jade.png')
+       #image = Image.open('streamlit-buffett-main/assets/Jade.png')
 
-       image = st.image("/streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
+       image = st.image("streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
 
    
 
