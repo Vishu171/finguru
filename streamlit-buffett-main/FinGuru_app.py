@@ -109,11 +109,7 @@ tab1, tab2, tab3 = st.tabs([
           
     )
 
-with st.sidebar:('''
-#JADE image
-''')
-
-  
+with st.sidebar:
   
        from PIL import Image
        image = Image.open('streamlit-buffett-main/assets/Jade.png')
