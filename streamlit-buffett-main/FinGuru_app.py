@@ -13,19 +13,24 @@ st.set_page_config(layout="wide")
 # Variables
 sf_db = st.secrets["sf_database"]
 sf_schema = st.secrets["sf_schema"]
-tick_list = {'BRK.A': "Bershire Hathaway",
-             'AAPL': "Apple",
-             'PG' : "Proctor and Gamble",
-             'JNJ' : "Johnson and Johnson",
-             'MA' : "Mastercard",
-             'MCO' : "Moodys Corp",
-             'VZ' : "Verizon",
-             'KO' : "Kotak",
-             'AXP' : "American Express",
-             'BAC' : "Bank of America"}
+tick_list = {'BRK.A': "Bershire Hathaway(BRK.A)",
+             'AAPL': "Apple(AAPL)",
+             'PG' : "Proctor and Gamble(PG)",
+             'JNJ' : "Johnson and Johnson(JNJ)",
+             'MA' : "Mastercard(MA)",
+             'MCO' : "Moodys Corp(MCO)",
+             'VZ' : "Verizon(VZ)",
+             'KO' : "Kotak(KO)",
+             'AXP' : "American Express(AXP)",
+             'BAC' : "Bank of America(BAC)"}
 #tick_list = ['BRK.A','AAPL','PG','JNJ','MA','MCO','VZ','KO','AXP', 'BAC']
 fin_statement_list = ['income_statement','balance_sheet','cash_flow_statement']
 year_cutoff = 20 # year cutoff for financial statement plotting
+
+chat_history = []
+
+
+
 
 # establish snowpark connection
 conn = st.experimental_connection("snowpark")
@@ -94,30 +99,24 @@ def format_func(option):
 
 
 
-
-
-
-
-
-
 # create tabs
 tab1, tab2, tab3 = st.tabs([
     "Explore Company Statements ", 
     "Explore Company Status ",
     "Explore Annual Reports "
-   ]
+    ]
           
     )
 
 with st.sidebar:
-  ('''
-  #Jade
-  ''')
   
 
-    #from PIL import Image
-    #image = Image.open('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/Jade.png')
-    #st.image(image, caption='')
+    from PIL import Image
+    image = Image.open('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/Jade.png')
+    st.image(image, caption='')
+
+   
+
    
 
 with tab1:
@@ -138,45 +137,12 @@ with tab1:
     - Use courteous language and expressions.
     """)
 
-    option = [
-       'What was Proctor and Gambles net income from 2010 through 2020?',  
-      'What was Apples debt to equity ratio for the last 5 years?',
-      'Rank the companies in descending order based on their net income in 2022. Include the ticker and net income value',
-      'What has been the average for total assets and total liabilities for each company over the last 3 years? List the top 3'
-    ]
-
-    # Create a selectbox to choose a question
-    selected_question = st.selectbox('Frequently asked questions:', option)
-     
-    st.write('You selected:', selected_question)
-    # Create a text input to edit the selected question
-    str_input = st.text_input(label='Edit the question:', value=selected_question)
-
-    # Display the selected question and the edited question
-  
-    st.write('You can Edit question:', str_input)
+   
     
-    # needed option = st.selectbox(
-     # needed'Frequently asked questions:',
-     # needed('What was Proctor and Gambles net income from 2010 through 2020?', 'What was Apples debt to equity ratio for the last 5 years?', 'Rank the companies in descending order based on their net income in 2022. Include the ticker and net income value','What has been the average for total assets and total liabilities for each company over the last 3 years? List the top 3'))
-
-     # neededst.write('You selected:',option)
-    #str_input = option 
-    
-    
-    #st.text_input(label='Your query:', value= text_input) 
-    
-    
-    # needed str_input = st.text_input(label='Your query? (e.g. What was the revenue and net income for Apple for the last 5 years?)') or option
-    
-    
-    #st.write('You have entered:', str_input)
-    #str_input = option
-  
-    #str_input = st.text_input(label='What would you like to answer? (e.g. What was the revenue and net income for Apple for the last 5 years?)')
+    str_input = st.text_input(label=' Enter the question: :question:')  
 
     if len(str_input) > 1:
-        with st.spinner('Looking up your question in Snowflake now...'):
+        #with st.spinner('Looking up your question i'):
             try:
                 output = fs_chain(str_input)
                 #st.write(output)
@@ -196,20 +162,22 @@ with tab1:
                 st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 3 to ask from shareholder letters. Also, only a handful of companies are available, which you can see on the side bar.")
                 st.write(f"Final errored query used:")
                 #sst.write(output)
+    
+
 
 with tab2: 
     st.markdown("""
     
 
-    Would you like to know how your other companies are doing. Understand their upward and downward trend in their Cash Flows, Net incomes, etc? 
+    
     
     ### FinGuru is here you help you with the Exploration
    
-    FinGuru asks you to Select your company from the drop down and get started !!
+    
     """)
     #sel_tick = st.selectbox("Select a ticker to view", tick_list)
-    option = st.selectbox("Select option", options=list(tick_list.keys()), format_func=format_func)
-    st.write(f"You selected option {option} called {format_func(option)}")
+    option = st.selectbox("Select Company", options=list(tick_list.keys()), format_func=format_func)
+    #st.write(f"You selected option {option} called {format_func(option)}")
 
     # pull the financial statements
     # This whole section could be more efficient...
@@ -276,31 +244,24 @@ with tab3:
     It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
 
     ### Call out to FinGuru !!!
-    You can now interact with your Shareholder documents and find relevant answers
+    
     
     """
     )
-    option = [
-    'How does Berkshire take care of market fluctuations?',
-    'What are key variables behind Geicos profit sharing contribution?',
-    'What are common stock investment by Berkshire in the year 1998?',
-    'What is AGR from 1968 to 1998?',
-     ]
-    # Create a selectbox to choose a question
-    selected_question = st.selectbox('Frequently asked questions:', option)
-    st.write('You selected:', selected_question)
+    
     # Create a text input to edit the selected question
-    query = st.text_input(label='Edit the question:', value=selected_question)
-
+    #query = st.text_input(label='Enter the question:')
+    query = st.text_input(label=':question: Enter the question: ') 
+    #query = st.text_input(label=f'✉️ Enter the question: ')
     # Display the selected question and the edited question
     
-    st.write('Edited question:', query)
+    #st.write('Enter the question:', query)
     #query = st.text_input("What would you like to ask Warren Buffett?")
     if len(query)>1:
-        with st.spinner('Looking through lots of Shareholder letters now...'):
+        #with st.spinner('Looking through lots of Shareholder letters now...'):
             
             try:
-                st.caption(":blue[FinGuru's response:]")
+                #st.caption(":blue[FinGuru's response:]")
                 #st.write(prompts.letter_qa(query))
                 result = prompts.letter_chain(query)
                 st.write(result['result'])
@@ -309,7 +270,6 @@ with tab3:
             except:
                 st.write("Please try to improve your question")
 
+   
 
-    
-    
- 
+
