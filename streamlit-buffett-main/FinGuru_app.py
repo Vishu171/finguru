@@ -171,7 +171,7 @@ with tab2:
     Are you curious to know how other companies are faring? Interested in tracking their financial metrics like Net income, cash flow, profit margin, etc. Eager to read their income statement, balance sheet and profit and loss statements!!
     
     
-    ### FinGuru is here you help you with the Exploration.Simply select the company from the drop down and get started !!
+    FinGuru is here you help you with the Exploration.Simply select the company from the drop down and get started !!
    
     
     """)
