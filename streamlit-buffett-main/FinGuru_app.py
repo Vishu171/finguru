@@ -255,7 +255,7 @@ with tab3:
     #query = st.text_input("Enter the question:") 
     #query = st.text_input(label=f'✉️ Enter the question: ')
     # Display the selected question and the edited question
-    query = st.text_input(label='Edit the question:')
+    query = st.text_input(label='Enter the question:')
     #st.write('Enter the question:', query)
     #query = st.text_input("What would you like to ask Warren Buffett?")
     if len(query)>1:
