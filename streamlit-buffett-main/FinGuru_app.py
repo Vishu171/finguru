@@ -110,7 +110,7 @@ tab1, tab2, tab3 = st.tabs([
     )
 
 with st.sidebar:('''
-#JADE
+#JADE image
 ''')
 
   
