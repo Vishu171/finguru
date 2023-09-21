@@ -142,7 +142,7 @@ with tab1:
     str_input = st.text_input(label=' Enter the question: :question:')  
 
     if len(str_input) > 1:
-        #with st.spinner('Looking up your question i'):
+        with st.spinner('Looking up your question i'):
             try:
                 output = fs_chain(str_input)
                 #st.write(output)
