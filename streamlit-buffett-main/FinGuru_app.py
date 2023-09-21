@@ -113,10 +113,10 @@ with st.sidebar:('''
 ''')
   
   
-       from PIL import Image
+       #from PIL import Image
        #image = Image.open('streamlit-buffett-main/assets/Jade.png')
 
-       image = st.image("streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
+       image = st.image("/streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
 
    
 
