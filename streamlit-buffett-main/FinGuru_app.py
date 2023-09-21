@@ -113,8 +113,8 @@ with st.sidebar:('''
 ''')
   
 
-    #from PIL import Image
-    #image = Image.open('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/Jade.png')
+    from PIL import Image
+    image = Image.open('/streamlit-buffett-main/assets/Jade.png')
     #st.image(image, caption='')
 
    
