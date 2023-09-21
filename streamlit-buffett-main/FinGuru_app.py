@@ -125,9 +125,7 @@ with tab1:
     st.markdown("""
     # Greetings from FinGuru !! 
     
-    Are you worried about your company's financial stability? Are you wondering what your income statements, balance sheets and cash flow statements are trying to tell you??
-    
-    To answer all your questions here I am, FinGuru, your Intelligent Finance Virtual assistant. I am an AI expert. I will read all your Financial statements and provide answers to your queries on them
+    A warm welcome to all! I'm FinGuru, your Intelligent Finance Virtual Assistant. As an AI expert, I'm here to assist you with all your financial inquiries. I possess the ability to analyze financial statements from a variety of companies. Whether you have questions about budgeting, investing, or any other financial topic, I'm here to provide you with insightful answers and guidance. Feel free to ask me anything related to finance!
     
     **Here are some guidelines to ask questions to FinGuru**
 
@@ -170,10 +168,10 @@ with tab1:
 with tab2: 
     st.markdown("""
     
-
+    Are you curious to know how other companies are faring? Interested in tracking their financial metrics like Net income, cash flow, profit margin, etc. Eager to read their income statement, balance sheet and profit and loss statements!!
     
     
-    ### FinGuru is here you help you with the Exploration
+    ### FinGuru is here you help you with the Exploration.Simply select the company from the drop down and get started !!
    
     
     """)
@@ -242,9 +240,8 @@ with tab3:
     st.markdown("""
   
      Your CEO has released the annual letter to the shareholders. It is an important document with key information, performance upddates and company's strategy to shareholders
-
+     
     It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
-
     ### Call out to FinGuru !!!
     
     
