@@ -4,15 +4,33 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 import prompts
+#import tkinter as tk
+
+
 
 st.set_page_config(layout="wide")
 
 # Variables
 sf_db = st.secrets["sf_database"]
 sf_schema = st.secrets["sf_schema"]
-tick_list = ['BRK.A','AAPL','PG','JNJ','MA','MCO','VZ','KO','AXP', 'BAC']
+tick_list = {'BRK.A': "Bershire Hathaway(BRK.A)",
+             'AAPL': "Apple(AAPL)",
+             'PG' : "Proctor and Gamble(PG)",
+             'JNJ' : "Johnson and Johnson(JNJ)",
+             'MA' : "Mastercard(MA)",
+             'MCO' : "Moodys Corp(MCO)",
+             'VZ' : "Verizon(VZ)",
+             'KO' : "Kotak(KO)",
+             'AXP' : "American Express(AXP)",
+             'BAC' : "Bank of America(BAC)"}
+#tick_list = ['BRK.A','AAPL','PG','JNJ','MA','MCO','VZ','KO','AXP', 'BAC']
 fin_statement_list = ['income_statement','balance_sheet','cash_flow_statement']
 year_cutoff = 20 # year cutoff for financial statement plotting
+
+
+
+
+
 
 # establish snowpark connection
 conn = st.experimental_connection("snowpark")
@@ -59,7 +77,10 @@ def fs_chain(str_input):
     the prompts.fs_chain is used but with caching
     """
     output = prompts.fs_chain(str_input)
+    type(output)
     return output
+
+    
 
 # adding this to test out caching
 st.cache_data(ttl=86400)
@@ -70,96 +91,101 @@ def sf_query(str_input):
     data = conn.query(str_input)
     return data
 
+
+
+def format_func(option):
+    return tick_list[option]
+
+
+
+
 # create tabs
-tab1, tab2, tab3, tab4 = st.tabs([
-    "Financial Statement Questions :dollar:", 
-    "Financial Data Exploration :chart_with_upwards_trend:",
-    "Shareholder Letter Questions :memo:", 
-    "Additional Details :notebook:"]
+tab1, tab2, tab3 = st.tabs([
+    "Explore Company Statements ", 
+    "Explore Company Status ",
+    "Explore Annual Reports "
+    ]
+          
     )
 
-with st.sidebar:
-    st.markdown("""
-    # Ask the Oracle of Omaha: Using LLMs to Provide a View into the World of Warren Buffett :moneybag:
-    This app enables exploration into the World of Warren Buffett, enabling you to ask financial questions regarding his top investments and over 40 years of his shareholder letters.
-    This app is powered by Snowflake :snowflake:, Streamlit, OpenAI, Langchain and Pinecone, leveraging Large Language Models (LLMs)
+with st.sidebar:('''
+#JADE
+''')
+  
+  
+       #from PIL import Image
+       #image = Image.open('streamlit-buffett-main/assets/Jade.png')
 
-    Tabs:
-    ### 1: Financial Statement Questions :dollar:
-    Ask financial questions using natural language regarding the investments
-    ### 2: Financial Data Exploration :chart_with_upwards_trend:
-    Query Snowflake to view financials for various Warren Buffett investments
-    ### 3: Shareholder Letter Questions :memo:
-    Ask various questions based on Warren Buffett's shareholder letters from 1977 through 2022  
+       #image = st.image("/streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
 
-    **Current Available Companies to ask financials about for tabs 1 and 2:**
-    1. Apple
-    2. Bershire Hathaway
-    3. Proctor and Gamble
-    4. Johnson and Johnson
-    5. Mastercard
-    6. Moodys Corp
-    7. Verizon
-    8. American Express
-    9. Bank of America
+   
 
-    Produced by @randypettus
-    """)
+   
 
 with tab1:
     st.markdown("""
-    # Financial Statement Questions :dollar:
-    ### Leverage LLMs to translate natural language questions related to financial statements and turn those into direct Snowflake queries
-    Data is stored and queried directly from income statement, balance sheet, and cash flow statement in Snowflake
-
-    **Example questions to ask:**
-
-    - What was Proctor and Gamble's net income from 2010 through 2020?
-    - What was Apple's debt to equity ratio for the last 5 years?
-    - Rank the companies in descending order based on their net income in 2022. Include the ticker and net income value
-    - What has been the average for total assets and total liabilities for each company over the last 3 years? List the top 3
-    """
-    )
+    # Greetings from FinGuru !! 
     
-    str_input = st.text_input(label='What would you like to answer? (e.g. What was the revenue and net income for Apple for the last 5 years?)')
+    A warm welcome to all! I'm FinGuru, your Intelligent Finance Virtual Assistant. As an AI expert, I'm here to assist you with all your financial inquiries. I possess the ability to analyze financial statements from a variety of companies. Whether you have questions about budgeting, investing, or any other financial topic, I'm here to provide you with insightful answers and guidance. Feel free to ask me anything related to finance!
+    
+    **Here are some guidelines to ask questions to FinGuru**
+
+    - Keep your query clear and straightforward manner.
+    - Avoid overly complex or jargon-filled language.
+    - Use a mix of open-ended questions (e.g., "How can I help you today?") and closed-ended questions (e.g., "Yes or no?") based on the situation.
+    - Provide multiple-choice options when appropriate to make it easier for me to respond
+    - Be polite and empathetic in your questions.
+    - Use courteous language and expressions.
+    """)
+
+   
+    
+    str_input = st.text_input(label=' Enter the question: :question:')  
 
     if len(str_input) > 1:
-        with st.spinner('Looking up your question in Snowflake now...'):
+        with st.spinner('Looking up your question i'):
             try:
                 output = fs_chain(str_input)
                 #st.write(output)
                 try:
                     # if the output doesn't work we will try one additional attempt to fix it
                     query_result = sf_query(output['result'])
+                   
                     if len(query_result) > 1:
                         st.write(query_result)
-                        st.write(output)
+                        #st.write(output)
                 except:
                     st.write("The first attempt didn't pull what you were needing. Trying again...")
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
                     st.write(sf_query(output['result']))
-                    st.write(output)
+                    #st.write(output)
             except:
                 st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 3 to ask from shareholder letters. Also, only a handful of companies are available, which you can see on the side bar.")
                 st.write(f"Final errored query used:")
-                #st.write(output)
+                #sst.write(output)
+    
+
 
 with tab2: 
     st.markdown("""
-    # Financial Data Exploration :chart_with_upwards_trend:
-
-    View financial statement data for selected companies owned by Warren Buffet by querying Snowflake directly.
-
-    Available companies are identified in the selection drop down
+    
+    Are you curious to know how other companies are faring? Interested in tracking their financial metrics like Net income, cash flow, profit margin, etc. Eager to read their income statement, balance sheet and profit and loss statements!!
+    
+    
+    FinGuru is here you help you with the Exploration.Simply select the company from the drop down and get started !!
+   
+    
     """)
-    sel_tick = st.selectbox("Select a ticker to view", tick_list)
+    #sel_tick = st.selectbox("Select a ticker to view", tick_list)
+    option = st.selectbox("Select Company", options=list(tick_list.keys()), format_func=format_func)
+    #st.write(f"You selected option {option} called {format_func(option)}")
 
     # pull the financial statements
     # This whole section could be more efficient...
-    inc_st = pull_financials(sf_db, sf_schema, 'income_statement_annual', sel_tick)
-    bal_st = pull_financials(sf_db, sf_schema, 'balance_sheet_annual', sel_tick)
+    inc_st = pull_financials(sf_db, sf_schema, 'income_statement_annual', option)
+    bal_st = pull_financials(sf_db, sf_schema, 'balance_sheet_annual', option)
     bal_st['debt_to_equity'] = bal_st['total_debt'].div(bal_st['total_equity'])
-    cf_st =  pull_financials(sf_db, sf_schema, 'cash_flow_statement_annual', sel_tick) 
+    cf_st =  pull_financials(sf_db, sf_schema, 'cash_flow_statement_annual', option) 
   
     col1, col2 = st.columns((1,1))
     with col1:
@@ -213,33 +239,34 @@ with tab2:
 
 with tab3:
     st.markdown("""
-    # Shareholder Letter Questions :memo:
-    ### Ask questions from all of Warren Buffett's annual shareholder letters dating back to 1977
-
-    These letters are much anticipated by investors for the wealth of knowledge that Buffett provides.
-    The tool allows you to interact with these letters by asking questions and a LLM is used to find relevant answers.
-
-    **Example questions to ask:**
+  
+     Your CEO has released the annual letter to the shareholders. It is an important document with key information, performance upddates and company's strategy to shareholders
+     
+    It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
+    ### Call out to FinGuru !!!
     
-    - How does your view on managing investment risk differ from professional investment managers?
-    - What was your gain in net worth in 1984?
-    - What are some of your biggest lessons learned?
-    - What do you look for in managers?
-    - Are markets efficient? Give a specific example that you have used in a letter.
+    
     """
     )
-
-    query = st.text_input("What would you like to ask Warren Buffett?")
+    
+    # Create a text input to edit the selected question
+    #query = st.text_input(label='Enter the question:')
+    query = st.text_input(label=' Enter the question: :question: ') 
+    #query = st.text_input(label=f'✉️ Enter the question: ')
+    # Display the selected question and the edited question
+    
+    #st.write('Enter the question:', query)
+    #query = st.text_input("What would you like to ask Warren Buffett?")
     if len(query)>1:
-        with st.spinner('Looking through lots of Shareholder letters now...'):
+        #with st.spinner('Looking through lots of Shareholder letters now...'):
             
             try:
-                st.caption(":blue[Warren's response] :sunglasses:")
+                #st.caption(":blue[FinGuru's response:]")
                 #st.write(prompts.letter_qa(query))
                 result = prompts.letter_chain(query)
                 st.write(result['result'])
-                st.caption(":blue[Source Documents Used] :📄:")
-                st.write(result['source_documents'])
+                #st.caption(":blue[Source Documents Used] :📄:")
+                #st.write(result['source_documents'])
             except:
                 st.write("Please try to improve your question")
 
