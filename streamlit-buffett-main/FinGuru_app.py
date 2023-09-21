@@ -111,6 +111,9 @@ tab1, tab2, tab3 = st.tabs([
 with st.sidebar:('''
 #JADE
 ''')
+     from PIL import Image
+       image = Image.open('./assets/buffett-app-architecture.png')
+       st.image(image, caption='Buffett app architecture')
   
   
        #from PIL import Image
