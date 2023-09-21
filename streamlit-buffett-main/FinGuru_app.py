@@ -142,10 +142,11 @@ with tab1:
 
    
     
-    str_input = st.text_input(label=' Enter the question: :question:')  
+    
+    str_input = st.text_input(label='What would you like to answer? (e.g. What was the revenue and net income for Apple for the last 5 years?)')
 
     if len(str_input) > 1:
-        #with st.spinner('Looking up your question i'):
+        with st.spinner('Looking up your question in Snowflake now...'):
             try:
                 output = fs_chain(str_input)
                 #st.write(output)
@@ -165,7 +166,6 @@ with tab1:
                 st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 3 to ask from shareholder letters. Also, only a handful of companies are available, which you can see on the side bar.")
                 st.write(f"Final errored query used:")
                 #sst.write(output)
-    
 
 
 with tab2: 
