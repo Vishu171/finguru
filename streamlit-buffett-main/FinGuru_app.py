@@ -108,7 +108,9 @@ tab1, tab2, tab3 = st.tabs([
           
     )
 
-with st.sidebar:
+with st.sidebar:('''
+#JADE
+''')
   
 
     #from PIL import Image
