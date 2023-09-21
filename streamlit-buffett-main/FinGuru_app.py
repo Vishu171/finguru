@@ -5,7 +5,7 @@ import streamlit as st
 import altair as alt
 import prompts
 #import tkinter as tk
-import Image
+
 
 
 
@@ -112,15 +112,13 @@ tab1, tab2, tab3 = st.tabs([
 with st.sidebar:('''
 #JADE
 ''')
-     from PIL import Image
-       image = Image.open('./assets/buffett-app-architecture.png')
-       st.image(image, caption='Buffett app architecture')
+
   
   
        #from PIL import Image
        #image = Image.open('streamlit-buffett-main/assets/Jade.png')
 
-       #image = st.image("/streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
+       image = st.image("/streamlit-buffett-main/assets/Jade.png", caption=" ", use_column_width=True)
 
    
 
