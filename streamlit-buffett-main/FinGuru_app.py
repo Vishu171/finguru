@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 import prompts
-import tkinter as tk
+#import tkinter as tk
 import warnings
 from datetime import datetime as dt
 from sklearn.model_selection import train_test_split
