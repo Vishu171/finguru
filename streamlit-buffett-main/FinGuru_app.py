@@ -141,7 +141,7 @@ with tab1:
 
    
     
-    str_input = st.text_input(label=' Enter the question:')  
+    str_input = st.text_input(label='Enter the question:')  
 
     if len(str_input) > 1:
         with st.spinner('Looking up your question i'):
