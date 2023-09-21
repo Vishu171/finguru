@@ -124,7 +124,9 @@ with tab1:
     st.markdown("""
     # Greetings from FinGuru !! 
     
-    A warm welcome to all! I'm FinGuru, your Intelligent Finance Virtual Assistant. As an AI expert, I'm here to assist you with all your financial inquiries. I possess the ability to analyze financial statements from a variety of companies. Whether you have questions about budgeting, investing, or any other financial topic, I'm here to provide you with insightful answers and guidance. Feel free to ask me anything related to finance!
+    A warm welcome to all!
+    
+    I'm FinGuru, your Intelligent Finance Virtual Assistant. As an AI expert, I'm here to assist you with all your financial inquiries. I possess the ability to analyze financial statements from a variety of companies. Whether you have questions about budgeting, investing, or any other financial topic, I'm here to provide you with insightful answers and guidance. Feel free to ask me anything related to finance!
     
     **Here are some guidelines to ask questions to FinGuru**
 
