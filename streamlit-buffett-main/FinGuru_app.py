@@ -252,7 +252,7 @@ with tab3:
     
     # Create a text input to edit the selected question
     #query = st.text_input(label='Enter the question:')
-    query = st.text_input(label='Enter the question:') 
+    query = st.text_input("Enter the question:") 
     #query = st.text_input(label=f'✉️ Enter the question: ')
     # Display the selected question and the edited question
     
