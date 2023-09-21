@@ -140,7 +140,7 @@ with tab1:
 
    
     
-    str_input = st.text_input(label=' Enter the question: :question:')  
+    str_input = st.text_input(label=' Enter the question:')  
 
     if len(str_input) > 1:
         with st.spinner('Looking up your question i'):
@@ -251,7 +251,7 @@ with tab3:
     
     # Create a text input to edit the selected question
     #query = st.text_input(label='Enter the question:')
-    query = st.text_input(label=' Enter the question: :question: ') 
+    query = st.text_input(label=' Enter the question:') 
     #query = st.text_input(label=f'✉️ Enter the question: ')
     # Display the selected question and the edited question
     
