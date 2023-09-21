@@ -111,9 +111,9 @@ tab1, tab2, tab3 = st.tabs([
 with st.sidebar:
   
 
-    from PIL import Image
-    image = Image.open('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/Jade.png')
-    st.image(image, caption='')
+    #from PIL import Image
+    #image = Image.open('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/Jade.png')
+    #st.image(image, caption='')
 
    
 
