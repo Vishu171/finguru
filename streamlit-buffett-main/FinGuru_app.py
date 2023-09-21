@@ -27,7 +27,7 @@ tick_list = {'BRK.A': "Bershire Hathaway(BRK.A)",
 fin_statement_list = ['income_statement','balance_sheet','cash_flow_statement']
 year_cutoff = 20 # year cutoff for financial statement plotting
 
-chat_history = []
+
 
 
 
@@ -115,7 +115,7 @@ with st.sidebar:('''
 
     from PIL import Image
     image = Image.open('/streamlit-buffett-main/assets/Jade.png')
-    #st.image(image, caption='')
+    st.image(image, caption='')
 
    
 
