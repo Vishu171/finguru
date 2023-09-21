@@ -142,8 +142,9 @@ with tab1:
 
    
     
-    
-    str_input = st.text_input(label='What would you like to answer? (e.g. What was the revenue and net income for Apple for the last 5 years?)')
+    str_input = st.text_input(label='Edit the question:')
+  
+    #str_input = st.text_input(label='What would you like to answer? (e.g. What was the revenue and net income for Apple for the last 5 years?)')
 
     if len(str_input) > 1:
         with st.spinner('Looking up your question in Snowflake now...'):
