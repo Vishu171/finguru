@@ -251,13 +251,12 @@ with tab3:
     )
     
     # Create a text input to edit the selected question
-    query = st.text_input(label='Enter the question:')
+    query = st.text_input(label=' Enter the question:')
    
     #query = st.text_input(label=f'✉️ Enter the question: ')
     # Display the selected question and the edited question
     #query = st.text_input(label='Enter the question:')
-    #st.write('Enter the question:', query)
-    #query = st.text_input("What would you like to ask Warren Buffett?")
+    
     if len(query)>1:
         #with st.spinner('Looking through lots of Shareholder letters now...'):
             
