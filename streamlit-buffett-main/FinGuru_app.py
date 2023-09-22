@@ -78,6 +78,7 @@ def fs_chain(str_input):
     the prompts.fs_chain is used but with caching
     """
     output = prompts.fs_chain(str_input)
+    st.write(output)
     #type(output)
     return output
 
@@ -146,7 +147,6 @@ with tab1:
     #st.write(f"Length of str_input: {len(str_input)}")
 
     if len(str_input) > 1:
-        #with st.spinner('Looking up your question i'):
             try:
                 output = fs_chain(str_input)
                 #st.write(output)
