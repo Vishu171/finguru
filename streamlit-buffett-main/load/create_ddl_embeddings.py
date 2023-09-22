@@ -5,7 +5,7 @@ from langchain.vectorstores import FAISS
 import streamlit as st
 
 # load the ddl file
-loader = TextLoader('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/load/ddls.sql')
+loader = TextLoader('load/ddls.sql')
 data = loader.load()
 
 # split the text
@@ -17,4 +17,4 @@ embeddings = OpenAIEmbeddings(openai_api_key = st.secrets["openai_key"])
 docsearch = FAISS.from_documents(texts, embeddings)
 
 # save the faiss index
-docsearch.save_local("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/faiss_index")
+docsearch.save_local("faiss_index")
