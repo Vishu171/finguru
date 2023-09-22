@@ -27,7 +27,7 @@ tick_list = {'BRK.A': "Bershire Hathaway(BRK.A)",
 fin_statement_list = ['income_statement','balance_sheet','cash_flow_statement']
 year_cutoff = 20 # year cutoff for financial statement plotting
 
-chat_history = []
+
 
 
 
@@ -108,13 +108,13 @@ tab1, tab2, tab3 = st.tabs([
           
     )
 
+
 with st.sidebar:
   
+       from PIL import Image
+       image = Image.open('streamlit-buffett-main/assets/Jade.png')
 
-    from PIL import Image
-    image = Image.open('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/Jade.png')
-    st.image(image, caption='')
-
+       image = st.image("streamlit-buffett-main/assets/Jade.png",width=150)
    
 
    
