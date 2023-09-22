@@ -10,7 +10,7 @@ import pinecone
 #nltk.download('punkt')
 
 # identify the various pdf files
-pdfs = [file for file in os.listdir('/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/letters/') if 'pdf' in file]
+pdfs = [file for file in os.listdir('./letters/') if 'pdf' in file]
 
 # loops through each pdf in the letters directory
 # and loops the content using langchains PyPDFLoader
@@ -20,7 +20,7 @@ pdfs = [file for file in os.listdir('/content/drive/MyDrive/NewSnowflake/streaml
 # but this approach just consolidates and loads them all in a flat list
 page_list = []
 for pdf in pdfs:
-    pdf_path = f"/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/letters/{pdf}"
+    pdf_path = f"./letters/{pdf}"
     loader = PyPDFLoader(pdf_path)
     pages = loader.load()
     page_list.append(pages)
