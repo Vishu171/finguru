@@ -155,9 +155,9 @@ with tab1:
                      #if the output doesn't work we will try one additional attempt to fix it
                      query_result = sf_query(output['result'])
                    
-                    if len(query_result)>1:
+                     if len(query_result)>1:
                         st.write(query_result)
-                        #st.write(output)
+                      #st.write(output)
                 except:
                     st.write("The first attempt didn't pull what you were needing. Trying again...")
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
