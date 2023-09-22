@@ -149,7 +149,7 @@ with tab1:
         with st.spinner('Looking up your question in Snowflake now...'):
             try:
                 st.write(f"Inside if Length of str_input: {len(str_input)}")
-                output = fs_chain(str_input)
+                #output = fs_chain(str_input)
                 st.write("The string is {}".format(str_input)
                 #st.write(output)
                 try:
