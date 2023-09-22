@@ -149,6 +149,7 @@ with tab1:
        st.write(str_input)
       
         with st.spinner('Looking up your question in Snowflake now...'):
+          st.write(str_input)
             try:
                 output = fs_chain(str_input)  
                 st.write(str_input)
