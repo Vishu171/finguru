@@ -151,7 +151,7 @@ with tab1:
             try:
                 st.write(str_input)
                 st.write(f"Inside if Length of str_input: {len(str_input)}")
-                #output = fs_chain(str_input)
+                output = fs_chain(str_input)
                
                 #st.write(output)
                 try:
