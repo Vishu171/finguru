@@ -59,7 +59,7 @@ llm = ChatOpenAI(
 def get_faiss():
     " get the loaded FAISS embeddings"
     embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_key"])
-    return FAISS.load_local("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/faiss_index", embeddings)
+    return FAISS.load_local("faiss_index", embeddings)
 
 
 def get_pinecone():
