@@ -151,7 +151,7 @@ with tab1:
                 st.write(f"Inside if Length of str_input: {len(str_input)}")
                 output = fs_chain(str_input)
                 st.write("The string is {}".format(str_input)
-                st.write(output)
+                #st.write(output)
                 try:
                     # if the output doesn't work we will try one additional attempt to fix it
                     query_result = sf_query(output['result'])
