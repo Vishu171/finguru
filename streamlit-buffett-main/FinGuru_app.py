@@ -148,11 +148,11 @@ with tab1:
     if len(str_input)>1:
        st.write(str_input)
       
-        #with st.spinner('Looking up your question in Snowflake now...'):
-            #try:
-                #output = fs_chain(str_input)  
-                #st.write(str_input)
-                #st.write(output)
+        with st.spinner('Looking up your question in Snowflake now...'):
+            try:
+                output = fs_chain(str_input)  
+                st.write(str_input)
+                st.write(output)
                 #try:
                     # if the output doesn't work we will try one additional attempt to fix it
                     #query_result = sf_query(output['result'])
