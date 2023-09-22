@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 import prompts
-import tkinter as tk
+
 
 
 
