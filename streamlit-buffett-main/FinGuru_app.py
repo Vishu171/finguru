@@ -78,7 +78,7 @@ def fs_chain(str_input):
     the prompts.fs_chain is used but with caching
     """
     output = prompts.fs_chain(str_input)
-    type(output)
+    #type(output)
     return output
 
     
