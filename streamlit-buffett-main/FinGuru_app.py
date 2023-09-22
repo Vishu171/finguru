@@ -142,6 +142,7 @@ with tab1:
    
     
     str_input = st.text_input(label='Enter the question:')
+    st.write("str_input:", str_input)
     st.write(f"Length of str_input: {len(str_input)}")
 
     if len(str_input)>1:
