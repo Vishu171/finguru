@@ -138,6 +138,12 @@ with tab1:
     - Provide multiple-choice options when appropriate to make it easier for me to respond
     - Be polite and empathetic in your questions.
     - Use courteous language and expressions.
+
+    **Example questions to ask:**
+
+    - What was Proctor and Gamble's net income from 2010 through 2020?
+    - What was Apple's debt to equity ratio for the last 5 years?
+    - Rank the companies in descending order based on their net income in 2022. Include the ticker and net income value
     """)
 
    
@@ -247,6 +253,11 @@ with tab3:
      
     It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
     ### Call out to FinGuru !!!
+
+     **Example questions to ask:**
+    
+    - What are non-traditional positions at yearend for BERKSHIRE?
+    - How does Berkshire take care of market fluctuations?
     
     
     """
