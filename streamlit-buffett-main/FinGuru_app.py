@@ -146,7 +146,7 @@ with tab1:
     st.write(f"Length of str_input: {len(str_input)}")
 
     if len(str_input)>1:
-      st.write(str_input)
+       st.write(str_input)
       
         #with st.spinner('Looking up your question in Snowflake now...'):
             try:
