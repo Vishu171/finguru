@@ -147,7 +147,7 @@ with tab1:
 
     if len(str_input) > 0:
         st.write(str_input)
-            try:
+      try:
                 output = fs_chain(str_input)
                 st.write(output)
                 try:
