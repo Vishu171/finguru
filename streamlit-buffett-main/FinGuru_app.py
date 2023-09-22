@@ -147,10 +147,10 @@ with tab1:
 
     if len(str_input)>1:
       
-        with st.spinner('Looking up your question in Snowflake now...'):
+        #with st.spinner('Looking up your question in Snowflake now...'):
             try:
-                st.write(str_input)
-                st.write(f"Inside if Length of str_input: {len(str_input)}")
+                #st.write(str_input)
+                #st.write(f"Inside if Length of str_input: {len(str_input)}")
                 output = fs_chain(str_input)
                
                 #st.write(output)
@@ -159,12 +159,12 @@ with tab1:
                     query_result = sf_query(output['result'])
                     if len(query_result) > 1:
                         st.write(query_result)
-                        st.write(output)
+                        #st.write(output)
                 except:
                     st.write("The first attempt didn't pull what you were needing. Trying again...")
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
                     st.write(sf_query(output['result']))
-                    st.write(output)
+                    #st.write(output)
             except:
                 st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 3 to ask from shareholder letters. Also, only a handful of companies are available, which you can see on the side bar.")
                 st.write(f"Final errored query used:")
