@@ -145,9 +145,10 @@ with tab1:
     st.write(f"Length of str_input: {len(str_input)}")
 
     if len(str_input)>1:
-      st.write("Inside If"+len(str_input))
+      
         #with st.spinner('Looking up your question in Snowflake now...'):
             try:
+                st.write("Inside If"+len(str_input))
                 output = fs_chain(str_input)
                 st.write(output)
                 try:
