@@ -99,7 +99,7 @@ def format_func(option):
     return tick_list[option]
 
 def creds_entered():
-          if st.session_state["user1"].strip() == "admin" and st.session_state["passwd"].strip() == "admin": 
+          if st.session_state["user1"].strip() == "jade" and st.session_state["passwd"].strip() == "jade@123": 
               st.session_state["authenticated"] = True
 
           else:
