@@ -160,7 +160,7 @@ with tab1:
                     # if the output doesn't work we will try one additional attempt to fix it
                     query_result = sf_query(output['result'])
                    
-                    if len(query_result) > 1:
+                    if len(query_result) >= 1:
                         st.write(query_result)
                         #st.write(output)
                 except:
