@@ -102,7 +102,7 @@ def creds_entered():
           if st.session_state["user1"].strip() == "jade" and st.session_state["passwd"].strip() == "jade@123": 
               st.session_state["authenticated"] = True
 
-         else:
+          else:
             st.session_state["authenticated"] = False 
             if not st.session_state["passwd"]:
                    st.warning("Please enter Password.")
