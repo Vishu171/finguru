@@ -110,6 +110,8 @@ def creds_entered():
                    st.warning("Please enter Username.")
             else:
                    st.error("Invalid Username/Password ")
+
+
 def authenticate_user():
       if "authenticated" not in st.session_state:
         st.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
