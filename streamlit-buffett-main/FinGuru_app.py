@@ -102,10 +102,14 @@ def creds_entered():
           if st.session_state["user1"].strip() == "jade" and st.session_state["passwd"].strip() == "jade@123": 
               st.session_state["authenticated"] = True
 
-          else:
+         else:
             st.session_state["authenticated"] = False 
-            st.error("Invalid Username/Password  ")
-
+            if not st.session_state["passwd"]:
+                   st.warning("Please enter Password.")
+            elif not st.session_state["user1"]:
+                   st.warning("Please enter Username.")
+            else:
+                   st.error("Invalid Username/Password ")
 def authenticate_user():
       if "authenticated" not in st.session_state:
         st.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
