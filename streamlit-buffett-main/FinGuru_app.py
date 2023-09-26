@@ -114,16 +114,21 @@ def creds_entered():
 
 def authenticate_user():
       if "authenticated" not in st.session_state:
-        st.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
-        st.text_input(label="Password", value="", key="passwd", type="password", on_change=creds_entered)
+        buff, col, buff2 = st.columns([1,1,1])
+
+        #col.text_input('smaller text window:')
+        
+        col.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
+        col.text_input(label="Password", value="", key="passwd", type="password", on_change=creds_entered)
         return False
       else:
            if st.session_state["authenticated"]: 
-                 return True
-           else:
-            st.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
-            st.text_input(label="Password:", value="", key="passwd", type="password", on_change=creds_entered)
-            return False
+                return True
+           else:  
+                  buff, col, buff2 = st.columns([1,1,1])
+                  col.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
+                  col.text_input(label="Password:", value="", key="passwd", type="password", on_change=creds_entered)
+                  return False
 
 
 if authenticate_user():
