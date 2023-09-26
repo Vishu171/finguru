@@ -99,17 +99,13 @@ def format_func(option):
     return tick_list[option]
 
 def creds_entered():
-          if st.session_state["user1"].strip() == "jade" and st.session_state["passwd"].strip() == "jade@123": 
-              st.session_state["authenticated"] = True
+    if len(st.session_state["user1"])>0 and len(st.session_state["passwd"])>0:
+          if  st.session_state["user1"].strip() != "admin" or st.session_state["passwd"].strip() != "admin": 
+              st.session_state["authenticated"] = False
+              st.error("Invalid Username/Password ")
 
-          else:
-            st.session_state["authenticated"] = False 
-            if not st.session_state["passwd"]:
-                   st.warning("Please enter Password.")
-            elif not st.session_state["user1"]:
-                   st.warning("Please enter Username.")
-            else:
-                   st.error("Invalid Username/Password ")
+          elif st.session_state["user1"].strip() == "admin" and st.session_state["passwd"].strip() == "admin":
+              st.session_state["authenticated"] = True
 
 
 def authenticate_user():
