@@ -169,12 +169,14 @@ if authenticate_user():
       
           - What is the net income of JGSDL in 2022?
           - Compare this year revenue of JGSDL with previous year?
+             ''')
           
          
           
           str_input = st.text_input(label='Enter the question:')
           #st.write("str_input:", str_input)
           #st.write(f"Length of str_input: {len(str_input)}")
+       
       
           if len(str_input) > 1:
                   try:
