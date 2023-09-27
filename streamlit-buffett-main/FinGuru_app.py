@@ -148,9 +148,9 @@ if authenticate_user():
              from PIL import Image
              image = Image.open('streamlit-buffett-main/assets/Jade.png')
       
-             image = st.image("streamlit-buffett-main/assets/Jade.png",width=250)
+             image = st.image("streamlit-buffett-main/assets/Jade.png",width=200)
              st.markdown('''
-             ###Unleash Data's Power: Integrate, Analyze, Automate – Unified
+             # Unleash Data's Power: Integrate, Analyze, Automate – Unified
              ''')
       
          
