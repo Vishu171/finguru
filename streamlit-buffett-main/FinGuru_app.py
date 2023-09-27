@@ -156,29 +156,20 @@ if authenticate_user():
       
       with tab1:
           st.markdown("""
-          # Greetings from FinGuru !! 
+          #A warm welcome to my fellow companions !!  
           
-          A warm welcome to all!
+       
           
           
-         I'm **FinGuru**, your Intelligent Finance Virtual Assistant.As an AI expert, I'm here to assist you with all your financial inquiries. I possess the ability to analyze financial statements from a variety of companies. Whether you have questions about budgeting, investing, or any other financial topic, I'm here to provide you with insightful answers and guidance. Feel free to ask me anything related to finance!
+         I am **F-inSightGPT**, virtual Finance Assistant of your company, JGSDL Pvt Ltd. I am an AI expert. I possess the ability to extract information from your company's financial statements spanning across the past decade. Do not hesitate to ask me questions related to the company's financial health and well-being and I will try my level best to provide accurate and precise responses
           
-          **Here are some guidelines to ask questions to FinGuru**
+          
       
-          - Keep your query clear and straightforward manner.
-          - Avoid overly complex or jargon-filled language.
-          - Use a mix of open-ended questions (e.g., "How can I help you today?") and closed-ended questions (e.g., "Yes or no?") based on the situation.
-          - Provide multiple-choice options when appropriate to make it easier for me to respond
-          - Be polite and empathetic in your questions.
-          - Use courteous language and expressions.
+          **Some sample questions:**
       
-          **Sample questions to ask:**
-      
-          - What was Proctor and Gamble's net income from 2010 through 2020?
-          - What was Apple's debt to equity ratio for the last 5 years?
-          - Rank the companies in descending order based on their net income in 2022. Include the ticker and net income value
-          """)
-      
+          - What is the net income of JGSDL in 2022?
+          - Compare this year revenue of JGSDL with previous year?
+          
          
           
           str_input = st.text_input(label='Enter the question:')
@@ -216,12 +207,12 @@ if authenticate_user():
       with tab3:
           st.markdown("""
         
-           Your CEO has released the annual letter to the shareholders. It is an important document with key information, performance upddates and company's strategy to shareholders
+           The CEO of our company has released annual letter to the shareholders. It is an important document with key information, performance updates and company's strategy to shareholders
            
-          It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
-          ### Call out to FinGuru !!!
+          **F-inSightGPT** has this capability of scanning through all these pdf documents and provide accurate information on JGSDL's performance, strategic outlook, operational highlights, market and industry Analysis and financial information. You can ask simple questions and I will try my best to provide accurate and precise responses.
+       
       
-           **Sample questions to ask:**
+           **Some sample questions:**
           
           - What are non-traditional positions at yearend for BERKSHIRE?
           - How does Berkshire take care of market fluctuations?
