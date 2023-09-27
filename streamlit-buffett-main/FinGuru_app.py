@@ -207,7 +207,7 @@ if authenticate_user():
       with tab3:
           st.markdown("""
         
-           The CEO of our company has released annual letter to the shareholders. It is an important document with key information, performance updates and company's strategy to shareholders
+          The CEO of our company has released annual letter to the shareholders. It is an important document with key information, performance updates and company's strategy to shareholders
            
           **F-inSightGPT** has this capability of scanning through all these pdf documents and provide accurate information on JGSDL's performance, strategic outlook, operational highlights, market and industry Analysis and financial information. You can ask simple questions and I will try my best to provide accurate and precise responses.
        
