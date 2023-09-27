@@ -202,9 +202,42 @@ if authenticate_user():
                       st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 3 to ask from shareholder letters. Also, only a handful of companies are available, which you can see on the side bar.")
                       st.write(f"Final errored query used:")
                       #sst.write(output)
-          
+      with tab3:
+              st.markdown("""
+            
+              Your CEO has released the annual letter to the shareholders. It is an important document with key information, performance upddates and company's strategy to shareholders
       
+              It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
       
+              ### Call out to FinGuru !!!
+              
+              
+              """
+              )
+              
+              # Create a text input to edit the selected question
+              #query = st.text_input(label='Enter the question:')
+              query = st.text_input(label='Enter the question: ') 
+              #query = st.text_input(label=f'✉️ Enter the question: ')
+              # Display the selected question and the edited question
+              
+              #st.write('Enter the question:', query)
+              #query = st.text_input("What would you like to ask Warren Buffett?")
+              if len(query)>1:
+                  #with st.spinner('Looking through lots of Shareholder letters now...'):
+                      
+                      try:
+                          #st.caption(":blue[FinGuru's response:]")
+                          #st.write(prompts.letter_qa(query))
+                          result = prompts.letter_chain(query)
+                          st.write(result['result'])
+                          #st.caption(":blue[Source Documents Used] :📄:")
+                          #st.write(result['source_documents'])
+                      except:
+                          st.write("Please try to improve your question")
+                
+            
+            
       
       
      
