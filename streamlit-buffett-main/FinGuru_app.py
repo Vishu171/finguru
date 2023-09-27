@@ -213,7 +213,7 @@ if authenticate_user():
           #F-inSightGPT has this capability of scanning through all these pdf documents and provide accurate information on JGSDL's performance, strategic outlook, operational highlights, market and industry Analysis and financial information. You can ask simple questions and I will try my best to provide accurate and precise responses.
        
       
-             **Some Sample Questions:**
+             
           
           - What are non-traditional positions at yearend for BERKSHIRE?
           - How does Berkshire take care of market fluctuations?
