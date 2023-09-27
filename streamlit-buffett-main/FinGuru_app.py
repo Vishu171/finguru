@@ -161,7 +161,7 @@ if authenticate_user():
        
           
           
-         I am ** F-inSightGPT **, virtual Finance Assistant of your company, JGSDL Pvt Ltd. I am an AI expert. I possess the ability to extract information from your company's financial statements spanning across the past decade. Do not hesitate to ask me questions related to the company's financial health and well-being and I will try my level best to provide accurate and precise responses
+         I am **F-inSightGPT**, virtual Finance Assistant of your company, JGSDL Pvt Ltd. I am an AI expert. I possess the ability to extract information from your company's financial statements spanning across the past decade. Do not hesitate to ask me questions related to the company's financial health and well-being and I will try my level best to provide accurate and precise responses
           
           
       
