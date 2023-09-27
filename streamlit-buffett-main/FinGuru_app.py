@@ -150,7 +150,7 @@ if authenticate_user():
       
              image = st.image("streamlit-buffett-main/assets/Jade.png",width=200)
              st.markdown('''
-             **Unleash Data's Power: Integrate, Analyze, Automate – Unified**
+             *Unleash Data's Power: Integrate, Analyze, Automate – Unified
              ''')
       
          
