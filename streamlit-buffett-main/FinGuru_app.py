@@ -156,7 +156,7 @@ if authenticate_user():
       
       with tab1:
           st.markdown("""
-          #A warm welcome to my fellow companions !!  
+          ### A warm welcome to my fellow companions !!  
           
        
           
@@ -165,7 +165,7 @@ if authenticate_user():
           
           
       
-          ** Some Sample Questions: **
+          **Some Sample Questions:**
       
           - What is the net income of JGSDL in 2022?
           - Compare this year revenue of JGSDL with previous year?
