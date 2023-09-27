@@ -9,12 +9,12 @@ import streamlit as st
 
 # snowpark connection
 CONNECTION_PARAMETERS = {
-   "account": st.secrets['account'], 
-   "user": st.secrets['user'],
-   "password": st.secrets['password'],
-    "database": st.secrets['database'],
-   "schema": st.secrets['schema'],
-   "warehouse": st.secrets['warehouse'], 
+   "account": "jadeglobal", 
+   "user": "GENAI",
+   "password": "Genai@123",
+    "database": "FINANCIALS",
+   "schema": "PROD",
+   "warehouse": "DEMO_WH", 
 }
 
 # create session
