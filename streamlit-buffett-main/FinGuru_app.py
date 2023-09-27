@@ -205,16 +205,9 @@ if authenticate_user():
       
       
      with tab3:
-        st.markdown("""
-      
-        Your CEO has released the annual letter to the shareholders. It is an important document with key information, performance upddates and company's strategy to shareholders
-
-        It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information
-
-        ### Call out to FinGuru !!!
-        
-        
-        """
+        st.markdown(""" Your CEO has released the annual letter to the shareholders. It is an important document with key information, performance upddates and company's strategy to shareholders.
+        It is the much awatied document but you are hesitant to read and understand the company's Performance, Strategic outlook, Operational highlights, Market and Industry Analysis and Financial information.
+        ### Call out to FinGuru !!!"""
         )
         
         # Create a text input to edit the selected question
