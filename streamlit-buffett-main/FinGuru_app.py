@@ -196,6 +196,9 @@ if authenticate_user():
                           if len(query_result) >= 1:
                               st.write(query_result)
                               #st.write(output)
+                          result= prompts.letter_chain(query_result)
+                          st.write('Pincone:',result)
+                    
                       except:
                           st.write("The first attempt didn't pull what you were needing. Trying again...")
                           output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
