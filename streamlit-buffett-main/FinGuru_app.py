@@ -14,6 +14,8 @@ st.set_page_config(layout="wide")
 # Variables
 sf_db = st.secrets["sf_database"]
 sf_schema = st.secrets["sf_schema"]
+username=st.secrets["streamlit_username"]
+password=st.secrets["streamlit_password"]
 tick_list = {'BRK.A': "Bershire Hathaway (BRK.A)",
              'AAPL': "Apple (AAPL)",
              'PG' : "Proctor and Gamble (PG)",
@@ -100,11 +102,11 @@ def format_func(option):
 
 def creds_entered():
     if len(st.session_state["user1"])>0 and len(st.session_state["passwd"])>0:
-          if  st.session_state["user1"].strip() != "jade" or st.session_state["passwd"].strip() != "jade@123": 
+          if  st.session_state["user1"].strip() != username or st.session_state["passwd"].strip() != password: 
               st.session_state["authenticated"] = False
               st.error("Invalid Username/Password ")
 
-          elif st.session_state["user1"].strip() == "jade" and st.session_state["passwd"].strip() == "jade@123":
+          elif st.session_state["user1"].strip() == username and st.session_state["passwd"].strip() == password:
               st.session_state["authenticated"] = True
 
 
