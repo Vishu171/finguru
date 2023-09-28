@@ -207,7 +207,7 @@ if authenticate_user():
                       result_2 = prompts.letter_chain(str_input)
                       st.write('PineCone:', result_2['result'])  
                   except:
-                      st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 3 to ask from shareholder letters. Also, only a handful of companies are available, which you can see on the side bar.")
+                      st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 2 to ask from Annual Reports .")
                       st.write(f"Final errored query used:")
                       #sst.write(output)
       with tab3:
