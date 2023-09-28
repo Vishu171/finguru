@@ -112,8 +112,7 @@ def letter_qa(query, temperature=.1,model_name="gpt-3.5-turbo"):
     return pdf_qa({"question": query, "chat_history": ""})
 
 def summary_output(question, data):
-    prompt = f"You will be acting as an expert in analyzing financial data. You will be provided the question with the data and you have to analyze the data, find pattern, trends and provide the summary data and also provide financial prediction of the data in 200 words.\n{data}\nQuestion: {question}\nAnswer:"
-
+    prompt = f"You are an expert in financial analysis. Given the financial data and a question, analyze the data, highlight important trends or anomalies, and provide a concise summary. Utilize historical data to make a prediction, and if possible, cross-reference this information with PDFs to gather additional context.\n Question:{question}{data}\n Answer:"
     # Generate a response using OpenAI GPT-3
     response = openai.Completion.create(
         engine="text-davinci-002",
