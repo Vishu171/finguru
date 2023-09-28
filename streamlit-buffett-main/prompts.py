@@ -31,6 +31,8 @@ Some figures may have slightly different terminology, so find the best match to 
 If the user asks about multiple figures from different financial statements, create join logic that uses the ticker and year columns. Don't use SQL terms for the table alias though. Just use a, b, c, etc.
 The user may use a company name so convert that to a ticker.
 
+If user ask for question about the amounts(revenue,net income, gross profit, etc.) then show message amount is in millions.
+
 Question: {question}
 Context: {context}
 
