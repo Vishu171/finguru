@@ -206,8 +206,9 @@ if authenticate_user():
                           #st.write(output)
                       output = fs_chain(str_input)
                       query_result = sf_query(output['result'])
-                      result_2 = prompts.letter_chain(query_result)
-                      st.write('PineCone:', result_2['result'])  
+                      st.write(query_result)
+                      #result_2 = prompts.letter_chain(query_result)
+                      #st.write('PineCone:', result_2['result'])  
                   except:
                       st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 2 to ask from Annual Reports .")
                       st.write(f"Final errored query used:")
