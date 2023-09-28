@@ -16,22 +16,9 @@ sf_db = st.secrets["sf_database"]
 sf_schema = st.secrets["sf_schema"]
 username=st.secrets["streamlit_username"]
 password=st.secrets["streamlit_password"]
-tick_list = {'BRK.A': "Bershire Hathaway (BRK.A)",
-             'AAPL': "Apple (AAPL)",
-             'PG' : "Proctor and Gamble (PG)",
-             'JNJ' : "Johnson and Johnson (JNJ)",
-             'MA' : "Mastercard (MA)",
-             'MCO' : "Moodys Corp (MCO)",
-             'VZ' : "Verizon (VZ)",
-             'KO' : "Kotak (KO)",
-             'AXP' : "American Express (AXP)",
-             'BAC' : "Bank of America (BAC)"}
-#tick_list = ['BRK.A','AAPL','PG','JNJ','MA','MCO','VZ','KO','AXP', 'BAC']
+
 fin_statement_list = ['income_statement','balance_sheet','cash_flow_statement']
 year_cutoff = 20 # year cutoff for financial statement plotting
-
-
-
 
 
 
@@ -159,12 +146,12 @@ if authenticate_user():
       
       with tab1:
           st.markdown("""
-          **A warm welcome to my fellow companions !!** 
+          **Greetings !! ** 
           
        
           
           
-         I am **F-inSightGPT**, virtual Finance Assistant of your company, JGSDL Pvt Ltd. I am an AI expert. I possess the ability to extract information from your company's financial statements spanning across the past decade. Do not hesitate to ask me questions related to the company's financial health and well-being and I will try my level best to provide accurate and precise responses
+         I am the Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across the past decade. Please ask me questions and I will try my level best to provide accurate responses.
           
           
       
@@ -227,9 +214,7 @@ if authenticate_user():
       with tab3:
               st.markdown("""
             
-              The CEO of our company has released annual letter to the shareholders. It is an important document with key information, performance updates and company's strategy to shareholders
-             
-              **F-inSightGPT** has this capability of scanning through all these pdf documents and provide accurate information on JGSDL's performance, strategic outlook, operational highlights, market and industry Analysis and financial information. You can ask simple questions and I will try my best to provide accurate and precise responses.
+              I am capable of reviewing the annual reports from the past four years of the company. Please ask me questions and I will try my level best to provide accurate responses.
               
                **Some Sample Questions:**
       
