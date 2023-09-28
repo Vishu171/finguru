@@ -155,7 +155,7 @@ if authenticate_user():
           **Some Sample Questions:**
       
           - What is the net income of JGSDL in 2022?
-          - Compare this year revenue of JGSDL with previous year?
+          - Compare this year revenue of JGSDL with last year?
             """
             )
           
@@ -212,6 +212,7 @@ if authenticate_user():
               st.markdown("""
             
               I am capable of reviewing the annual reports from 2019 to 2021. Please ask me questions and I will try my level best to provide accurate responses
+               
                **Some Sample Questions:**
       
               - How many shareholders does JGSDL have?
