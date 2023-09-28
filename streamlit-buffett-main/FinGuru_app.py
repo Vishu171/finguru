@@ -136,9 +136,7 @@ if authenticate_user():
              image = Image.open('streamlit-buffett-main/assets/F-GeniusJade.png')
       
              image = st.image("streamlit-buffett-main/assets/F-GeniusJade.png",width=200)
-             st.markdown('''
-             *Unleash Data's Power: Integrate, Analyze, Automate – Unified*
-             ''')
+            
       
          
       
