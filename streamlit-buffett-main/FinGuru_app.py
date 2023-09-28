@@ -191,8 +191,11 @@ if authenticate_user():
                           query_result = sf_query(output['result'])
                          
                           if len(query_result) >= 1:
-                              st.write(query_result)
+                              #st.write(query_result)
                               #st.write(output)
+                              data = pd.DataFrame(query_result)
+                              data.columns = data.columns.str.replace('_', ' ')
+                              st.write(data)
                           #result= prompts.letter_chain(query_result)
                           #st.write('Pincone:',result)
                           df = pd.DataFrame(query_result)
