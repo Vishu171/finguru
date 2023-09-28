@@ -144,13 +144,12 @@ if authenticate_user():
       
       with tab1:
           st.markdown("""
-          ** Greetings !! ** 
+          **Greetings !!** 
           
        
           
           
-         I am the Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across the past decade. Please ask me questions and I will try my level best to provide accurate responses.
-          
+         I am the Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across 2010 to 2021. Please ask me questions and I will try my level best to provide accurate responses.
           
       
           **Some Sample Questions:**
@@ -212,11 +211,10 @@ if authenticate_user():
       with tab3:
               st.markdown("""
             
-              I am capable of reviewing the annual reports from the past four years of the company. Please ask me questions and I will try my level best to provide accurate responses.
-              
+              I am capable of reviewing the annual reports from 2019 to 2021. Please ask me questions and I will try my level best to provide accurate responses
                **Some Sample Questions:**
       
-              - How did JGSDL take care of market fluctuations?
+              - How many shareholders does JGSDL have?
               - What are the risks JGSDL is facing?
               
               """
