@@ -111,3 +111,15 @@ def letter_qa(query, temperature=.1,model_name="gpt-3.5-turbo"):
                     pinecone_search(), return_source_documents=True)
     return pdf_qa({"question": query, "chat_history": ""})
 
+def summary_output(question, data):
+    prompt = f"You will be acting as an expert in analyzing financial data. You will be provided the question with the data and you have to analyze the data, find pattern, trends and provide the summary data and also provide financial prediction of the data in 200 words.\n{data}\nQuestion: {question}\nAnswer:"
+
+    # Generate a response using OpenAI GPT-3
+    response = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=prompt,
+        max_tokens=300
+    )
+
+    return response.choices[0].text.strip()
+
