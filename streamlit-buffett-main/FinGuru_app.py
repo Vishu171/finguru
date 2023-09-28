@@ -213,8 +213,8 @@ if authenticate_user():
                       st.write(str_input_2)
                       result_3 = prompts.letter_chain(str_input_2)
                       st.write('PineCone2:', result_3['result'])
-                      #result_2 = prompts.letter_chain(query_result)
-                      #st.write('PineCone:', result_2['result'])  
+                      result_2 = prompts.letter_chain(df_str_2)
+                      st.write('PineCone:', result_2['result'])  
                   except:
                       st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 2 to ask from Annual Reports .")
                       st.write(f"Final errored query used:")
