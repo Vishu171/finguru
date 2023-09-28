@@ -207,6 +207,11 @@ if authenticate_user():
                       output = fs_chain(str_input)
                       query_result = sf_query(output['result'])
                       st.write(query_result)
+                      df_2 = pd.DataFrame(query_result)
+                      df_str_2 = df_2.to_string(index=True)
+                      str_input_2 = str_input + ' '+ df_str_2
+                      result_3 = prompts.summary_pine(str_input_2)
+                      st.write('PineCone2:', result_3['result'])
                       result_2 = prompts.letter_chain(query_result)
                       st.write('PineCone:', result_2['result'])  
                   except:
