@@ -162,8 +162,7 @@ if authenticate_user():
          
           
           str_input = st.text_input(label='Enter the question:')
-          #st.write("str_input:", str_input)
-          #st.write(f"Length of str_input: {len(str_input)}")
+         
        
       
           if len(str_input) > 1:
@@ -175,17 +174,12 @@ if authenticate_user():
                           query_result = sf_query(output['result'])
                          
                           if len(query_result) >= 1:
-                              #st.write(query_result)
+                              
                               #st.write(output)
                               data = pd.DataFrame(query_result)
                               data.columns = data.columns.str.replace('_', ' ')
                               st.write(data)
-                          #result= prompts.letter_chain(query_result)
-                          #st.write('Pincone:',result)
-                          #df = pd.DataFrame(query_result)
-                          #df_str = df.to_string(index=True)
-                          #result = prompts.summary_output(str_input,df_str)
-                          #st.write('Summary:',result)
+                          
                       except:
                           st.write("The first attempt didn't pull what you were needing. Trying again...")
                           output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
@@ -197,17 +191,13 @@ if authenticate_user():
                       df_2 = pd.DataFrame(query_result)
                       df_str_2 = df_2.to_string(index=True)
                       str_input_2 = str_input + ' '+ df_str_2
-                      #st.write(str_input_2)
-                      #result_3 = prompts.letter_chain(str_input_2)
-                      #st.write('Result after sending the question and data:', result_3['result'])
                       result_2 = prompts.letter_chain(df_str_2)
                       st.write('Summary:', result_2['result'])  
-                      #result_4 = prompts.letter_chain(str_input)
-                      #st.write('Result after sending question:', result_4['result']) 
+                     
                   except:
                       st.write("Please try to improve your question. Note this tab is for financial statement questions. Use Tab 2 to ask from Annual Reports .")
                       st.write(f"Final errored query used:")
-                      #sst.write(output)
+                     
       with tab3:
               st.markdown("""
             
@@ -222,23 +212,19 @@ if authenticate_user():
               )
               
               # Create a text input to edit the selected question
-              #query = st.text_input(label='Enter the question:')
-              query = st.text_input(label='Enter the question: ') 
-              #query = st.text_input(label=f'✉️ Enter the question: ')
-              # Display the selected question and the edited question
               
-              #st.write('Enter the question:', query)
-              #query = st.text_input("What would you like to ask Warren Buffett?")
+              query = st.text_input(label='Enter the question: ') 
+            
               if len(query)>1:
-                  #with st.spinner('Looking through lots of Shareholder letters now...'):
+                  
                       
                       try:
-                          #st.caption(":blue[FinGuru's response:]")
+                         
                           #st.write(prompts.letter_qa(query))
                           result = prompts.letter_chain(query)
                           st.write(result['result'])
-                          #st.caption(":blue[Source Documents Used] :📄:")
-                          #st.write(result['source_documents'])
+                     
+                       
                       except:
                           st.write("Please try to improve your question")
                 
