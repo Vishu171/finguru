@@ -133,9 +133,9 @@ if authenticate_user():
       with st.sidebar:
         
              from PIL import Image
-             image = Image.open('streamlit-buffett-main/assets/F-GeniusJade.png')
+             image = Image.open('streamlit-buffett-main/assets/Newlogo.png')
       
-             image = st.image("streamlit-buffett-main/assets/F-GeniusJade.png",width=250)
+             image = st.image("streamlit-buffett-main/assets/Newlogo.png",width=250)
             
       
          
