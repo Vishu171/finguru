@@ -118,6 +118,8 @@ def authenticate_user():
                   col.text_input(label="Password:", value="", key="streamlit_password", type="password", on_change=creds_entered)
                   return False
 
+
+
 if authenticate_user():
 
     with st.sidebar:
