@@ -185,8 +185,8 @@ if authenticate_user():
       
 
         from PIL import Image
-        image = Image.open('streamlit-buffett-main/assets/F-GeniusJade.png')
-        image = st.image("streamlit-buffett-main/assets/F-GeniusJade.png",width=250)
+        image = Image.open('streamlit-buffett-main/assets/Newlogo.png')
+        image = st.image("streamlit-buffett-main/assets/Newlogo.png",width=250)
         
 
 
