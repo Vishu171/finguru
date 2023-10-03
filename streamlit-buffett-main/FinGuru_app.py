@@ -128,7 +128,7 @@ if authenticate_user():
       image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=280)
       
       selected = option_menu( menu_title=None,
-      options=["Explore Company Statements", 'Explore Annual Report'], 
+      options=["Explore Company Statements", 'Explore Annual Reports'], 
       icons=['database', 'filetype-pdf'],  
       default_index=0,
       styles={"container":{"font-family": "Garamond"},
