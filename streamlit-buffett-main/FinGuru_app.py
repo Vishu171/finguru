@@ -185,12 +185,9 @@ if authenticate_user():
       
 
         from PIL import Image
-        image = Image.open('./assets/F-GeniusJade.png')
-        st.image(image, caption='')
-        #st.write("Explore Company Statements")
-        #str_input = st.text_input(label=' Enter the question:')
-        #st.write("Explore Annual Reports")
-        #query = st.text_input(label='Enter the question: ')
+        image = Image.open('streamlit-buffett-main/assets/F-GeniusJade.png')
+        image = st.image("streamlit-buffett-main/assets/F-GeniusJade.png",width=250)
+        
 
 
       
