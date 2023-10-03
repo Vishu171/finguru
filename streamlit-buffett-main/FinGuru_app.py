@@ -92,12 +92,13 @@ def format_func(option):
 
 def creds_entered():
     if len(st.session_state["user1"])>0 and len(st.session_state["passwd"])>0:
-          if  st.session_state["user1"].strip() != "admin" or st.session_state["passwd"].strip() != "admin@123": 
+          if  st.session_state["user1"].strip() != username or st.session_state["passwd"].strip() != password: 
               st.session_state["authenticated"] = False
               st.error("Invalid Username/Password ")
 
-          elif st.session_state["user1"].strip() == "admin" and st.session_state["passwd"].strip() == "admin@123":
+          elif st.session_state["user1"].strip() == username and st.session_state["passwd"].strip() == password:
               st.session_state["authenticated"] = True
+
 
 def authenticate_user():
       if "authenticated" not in st.session_state:
