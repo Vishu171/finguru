@@ -13,6 +13,8 @@ st.set_page_config(layout="wide")
 # Variables
 sf_db = st.secrets["sf_database"]
 sf_schema = st.secrets["sf_schema"]
+username=st.secrets["streamlit_username"]
+password=st.secrets["streamlit_password"]
 tick_list = {'BRK.A': "Bershire Hathaway(BRK.A)",
              'AAPL': "Apple(AAPL)",
              'PG' : "Proctor and Gamble(PG)",
