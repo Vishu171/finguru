@@ -132,7 +132,7 @@ if authenticate_user():
       icons=['database', 'filetype-pdf'],  
       default_index=0,
       styles={"container":{"font-family": "Garamond"},
-        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "grey"}})
+        "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "grey"}})
 
     if selected =='Explore Company Statements':
         str_input = st.chat_input("Enter your question:")
