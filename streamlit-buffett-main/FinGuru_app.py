@@ -124,7 +124,7 @@ if authenticate_user():
       image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=250)
       
       selected = option_menu("Main Menu", ["Explore Company Statements", 'Explore Annual Report'], 
-        icons=['house', 'gear'], menu_icon="cast", default_index=1)
+        icons=['', ''], menu_icon="cast", default_index=1)
     if selected =='Explore Company Statements':
         str_input = st.chat_input("Enter your question:")
         st.markdown("""
