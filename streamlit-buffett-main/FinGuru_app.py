@@ -121,7 +121,7 @@ if authenticate_user():
     with st.sidebar:
       
       image = Image.open("streamlit-buffett-main/assets/FinGPT.png")
-      image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=250)
+      image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=200)
       
       selected = option_menu("Main Menu", ["Explore Company Statements", 'Explore Annual Report'], 
         icons=['', ''], menu_icon="", default_index=1)
