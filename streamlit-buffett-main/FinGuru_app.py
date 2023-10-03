@@ -91,12 +91,12 @@ def format_func(option):
     return tick_list[option]
 
 def creds_entered():
-    if len(st.session_state["user1"])>0 and len(st.session_state["passwd"])>0:
-          if  st.session_state["user1"].strip() != username or st.session_state["passwd"].strip() != password: 
+    if len(st.session_state["streamlit_username"])>0 and len(st.session_state["streamlit_password"])>0:
+          if  st.session_state["streamlit_username"].strip() != username or st.session_state["streamlit_password"].strip() != password: 
               st.session_state["authenticated"] = False
               st.error("Invalid Username/Password ")
 
-          elif st.session_state["user1"].strip() == username and st.session_state["passwd"].strip() == password:
+          elif st.session_state["streamlit_username"].strip() == username and st.session_state["streamlit_password"].strip() == password:
               st.session_state["authenticated"] = True
 
 
@@ -106,16 +106,16 @@ def authenticate_user():
 
         #col.text_input('smaller text window:')
         
-        col.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
-        col.text_input(label="Password", value="", key="passwd", type="password", on_change=creds_entered)
+        col.text_input(label="Username:", value="", key="streamlit_username", on_change=creds_entered) 
+        col.text_input(label="Password", value="", key="streamlit_password", type="password", on_change=creds_entered)
         return False
       else:
            if st.session_state["authenticated"]: 
                 return True
            else:  
                   buff, col, buff2 = st.columns([1,1,1])
-                  col.text_input(label="Username:", value="", key="user1", on_change=creds_entered) 
-                  col.text_input(label="Password:", value="", key="passwd", type="password", on_change=creds_entered)
+                  col.text_input(label="Username:", value="", key="streamlit_username", on_change=creds_entered) 
+                  col.text_input(label="Password:", value="", key="streamlit_password", type="password", on_change=creds_entered)
                   return False
 
 if authenticate_user():
