@@ -88,7 +88,7 @@ if authenticate_user():
           **Some Sample Questions:**
       
           - What is the net income of JGSDL in 2022?
-          - Compare this year revenue of JGSDL with last year?
+          - What are the cash and short term investment of JGSDL  in last 4 years?
         
         
         """)
