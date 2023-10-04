@@ -141,8 +141,7 @@ if authenticate_user():
                 output = fs_chain(str_input)
                 try:
                 # if the output doesn't work we will try one additional attempt to fix it
-                    query_result = sf_query(output['result'])
-                
+                    query_result = sf_query(output['result'])             
                     if len(query_result) >= 1:
                       with st.chat_message("assistant"):
                         df_2 = pd.DataFrame(query_result)
@@ -150,16 +149,13 @@ if authenticate_user():
                         headers = df_2.columns
                         st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
-                except:
-                    
+                except:            
                     st.session_state.messages.append({"role": "assistant", "content": "The first attempt didn't pull what you were needing. Trying again..."})
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
-                    st.write(sf_query(output['result']))
-                    
+                    st.write(sf_query(output['result']))                    
             except:
                 st.session_state.messages.append({"role": "assistant", "content": "Please try to improve your question. Note this tab is for financial statement questions. Use Tab 2 to ask from Annual Reports ."})
-                st.session_state.messages.append({"role": "assistant", "content": f"Final errored query used:"})
-                #sst.write(output)
+                st.session_state.messages.append({"role": "assistant", "content": f"Final errored query used:"})               
     else:
         query = st.chat_input("Enter your question:")
         st.markdown("""
@@ -175,12 +171,9 @@ if authenticate_user():
         # Create a text input to edit the selected question
         if "messages_1" not in st.session_state.keys():
               st.session_state.messages_1 = []
-
         for message in st.session_state.messages_1:
-              with st.chat_message(message["role"]):
-                  
-                  st.markdown(message["content"], unsafe_allow_html = True)
-        #query = st.chat_input('Enter the question:')
+              with st.chat_message(message["role"]):              
+                  st.markdown(message["content"], unsafe_allow_html = True)       
         if prompt1 := query:
             st.chat_message("user").markdown(prompt1, unsafe_allow_html = True)
               # Add user message to chat history
@@ -190,8 +183,6 @@ if authenticate_user():
                 with st.chat_message("assistant"):              
                   result = prompts.letter_chain(query)
                   st.write(result['result'])
-                  st.session_state.messages_1.append({"role": "assistant", "content":result['result'] } )
-                #st.caption(":blue[Source Documents Used] :📄:")
-                #st.write(result['source_documents'])
+                  st.session_state.messages_1.append({"role": "assistant", "content":result['result'] } )                
             except:
                 st.write("Please try to improve your question")
