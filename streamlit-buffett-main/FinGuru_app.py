@@ -15,17 +15,7 @@ sf_db = st.secrets["sf_database"]
 sf_schema = st.secrets["sf_schema"]
 username=st.secrets["streamlit_username"]
 password=st.secrets["streamlit_password"]
-tick_list = {'BRK.A': "Bershire Hathaway(BRK.A)",
-             'AAPL': "Apple(AAPL)",
-             'PG' : "Proctor and Gamble(PG)",
-             'JNJ' : "Johnson and Johnson(JNJ)",
-             'MA' : "Mastercard(MA)",
-             'MCO' : "Moodys Corp(MCO)",
-             'VZ' : "Verizon(VZ)",
-             'KO' : "Kotak(KO)",
-             'AXP' : "American Express(AXP)",
-             'BAC' : "Bank of America(BAC)"}
-#tick_list = ['BRK.A','AAPL','PG','JNJ','MA','MCO','VZ','KO','AXP', 'BAC']
+
 fin_statement_list = ['income_statement','balance_sheet','cash_flow_statement']
 year_cutoff = 20 # year cutoff for financial statement plotting
 
