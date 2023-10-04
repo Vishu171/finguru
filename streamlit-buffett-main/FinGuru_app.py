@@ -25,6 +25,21 @@ except:
 
 # adding this to test out caching
 st.cache_data(ttl=86400)
+
+def plot_financials(df_2, x, y, x_cutoff, title):
+    """"
+    helper to plot the altair financial charts
+    
+    return st.altair_chart(alt.Chart(df_2.head(x_cutoff)).mark_bar().encode(
+        x=x,
+        y=y
+        ).properties(title=title)
+    ) 
+    """
+    df_subset = df_2.head(x_cutoff)
+    # Create a bar chart using st.bar_chart()
+    return st.bar_chart(df_subset.set_index(x)[y])
+    
 def fs_chain(str_input):
     """
     performs qa capability for a question using sql vector db store
@@ -117,12 +132,17 @@ if authenticate_user():
                             if name in column_list:
                                 new_name = f"{name} ($ millions)"
                                 df_2.rename(columns={name : new_name}, inplace=True)
-                        if len(df_2.index) > 2:
-                            st.line_chart(df_2)
+                        col1, col2 = st.columns(2)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
                         headers = df_2.columns
-                        st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
+                        with col1:
+                         st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
+                        if len(df_2.index) >2 :
+                            title_name = df_2.columns[0]+'-'+df_2.columns[1]
+                            with col2:
+                             plot_financials(df_2,df_2.columns[0],df_2.columns[1], cutoff,title_name)
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
+                        
                 except:
                     st.session_state.messages.append({"role": "assistant", "content": "The first attempt didn't pull what you were needing. Trying again..."})
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
