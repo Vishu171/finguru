@@ -98,7 +98,7 @@ def authenticate_user():
 
 if authenticate_user():
     with st.sidebar:
-      image = Image.open("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/FinGPT.png")            
+      image = Image.open("streamlit-buffett-main/assets/FinGPT.png")            
       st.sidebar.markdown("\n\n")
         # Add your logo to the sidebar
       st.sidebar.image("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/FinGPT.png", width=280)
