@@ -12,6 +12,7 @@ st.set_page_config(layout="wide")
 
 username=st.secrets["streamlit_username"]
 password=st.secrets["streamlit_password"]
+column_list = ['']
 
 # establish snowpark connection
 conn = st.experimental_connection("snowpark")
@@ -113,6 +114,10 @@ if authenticate_user():
                       with st.chat_message("assistant"):
                         df_2 = pd.DataFrame(query_result)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
+                        for name in df_2.columns:
+                            if name in column_list:
+                                new_name = f"{name} ($ millions)"
+                                df_2.rename(columns={name = new_name}, inplace=True)
                         headers = df_2.columns
                         st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
