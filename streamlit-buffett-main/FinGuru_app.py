@@ -116,7 +116,7 @@ if authenticate_user():
             with st.chat_message(message["role"]):
                 df_str = message["content"]
                 csv = StringIO(df_str)
-                df_data = pd.read_csv(csv, sep',')
+                df_data = pd.read_csv(csv, sep=',')
                 col1, col2 = st.columns(2)
                 df_data.columns = df_2.columns.str.replace('_', ' ')
                 headers = df_2.columns
