@@ -7,6 +7,7 @@ import prompts
 from tabulate import tabulate
 from PIL import Image
 from streamlit_option_menu import option_menu
+from io import StringIO
 
 st.set_page_config(layout="wide")
 
@@ -113,7 +114,18 @@ if authenticate_user():
 
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
-                st.markdown(message["content"], unsafe_allow_html = True)
+                df_str = message["content"]
+                csv = StringIO(df_str)
+                df_data = pd.read_csv(csv, sep',')
+                col1, col2 = st.columns(2)
+                df_data.columns = df_2.columns.str.replace('_', ' ')
+                headers = df_2.columns
+                with col1:
+                    st.markdown(tabulate(df_data, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
+                    if len(df_data.index) >2 & len(df_data.columns) == 2:
+                        title_name = df_2.columns[0]+'-'+df_2.columns[1]
+                        with col2:
+                            plot_financials(df_2,df_2.columns[0],df_2.columns[1], cutoff,title_name)
         
         if prompt := str_input:
             st.chat_message("user").markdown(prompt, unsafe_allow_html = True)
@@ -139,12 +151,13 @@ if authenticate_user():
                         headers = df_2.columns
                         with col1:
                          st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
-                        if len(df_2.index) >2 :
+                        if len(df_2.index) >2 & len(df_2.columns) == 2:
                             title_name = df_2.columns[0]+'-'+df_2.columns[1]
                             with col2:
                              plot_financials(df_2,df_2.columns[0],df_2.columns[1], cutoff,title_name)
-                      st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
-                except:
+                      #st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
+                       st.session_state.messages.append({"role": "assistant", "content": df_2.to_csv(sep=', index=False)})
+                except: 
                     st.session_state.messages.append({"role": "assistant", "content": "The first attempt didn't pull what you were needing. Trying again..."})
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
                     st.write(sf_query(output['result']))
