@@ -94,9 +94,9 @@ if authenticate_user():
         for message in st.session_state.messages:
             role = st.chat_message(message["role"])
             avatar_val
-            if role == "assistant"
+            if role == "assistant":
                 avatar_val = "xyz.png"
-            else
+            else:
                 avatar_val = "None"
             with st.chat_message(message["role"], avatar=avatar_val):
                 st.markdown(message["content"], unsafe_allow_html = True)
@@ -146,9 +146,9 @@ if authenticate_user():
         for message in st.session_state.messages_1:
             role = st.chat_message(message["role"])
             avatar_val
-            if role == "assistant"
+            if role == "assistant":
                 avatar_val = "xyz.png"
-            else
+            else:
                 avatar_val = "None"
               with st.chat_message(message["role"], avatar=avatar_val):
                   st.markdown(message["content"], unsafe_allow_html = True)
