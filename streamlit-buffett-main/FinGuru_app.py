@@ -143,8 +143,6 @@ if authenticate_user():
                             title_name = df_2.columns[0]+'-'+df_2.columns[1]
                             with col2:
                              plot_financials(df_2,df_2.columns[0],df_2.columns[1], cutoff,title_name)
-                        else:
-                            pass
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
                 except:
                     st.session_state.messages.append({"role": "assistant", "content": "The first attempt didn't pull what you were needing. Trying again..."})
