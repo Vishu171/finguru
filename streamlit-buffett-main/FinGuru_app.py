@@ -116,7 +116,7 @@ if authenticate_user():
                         for name in df_2.columns:
                             if name in column_list:
                                 new_name = f"{name} ($ millions)"
-                                df_2.rename(columns={name = new_name}, inplace=True)
+                                df_2.rename(columns={name : new_name}, inplace=True)
                         if len(df_2.columns) > 2:
                             st.bar_chart(df_2)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
