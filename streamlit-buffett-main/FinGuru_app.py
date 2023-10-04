@@ -132,6 +132,8 @@ if authenticate_user():
                             if name in column_list:
                                 new_name = f"{name} ($ millions)"
                                 df_2.rename(columns={name : new_name}, inplace=True)
+                        
+                            #st.bar_chart(df_2) 
                         col1, col2 = st.columns(2)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
                         headers = df_2.columns
@@ -142,7 +144,6 @@ if authenticate_user():
                             with col2:
                              plot_financials(df_2,df_2.columns[0],df_2.columns[1], cutoff,title_name)
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
-                        
                 except:
                     st.session_state.messages.append({"role": "assistant", "content": "The first attempt didn't pull what you were needing. Trying again..."})
                     output = fs_chain(f'You need to fix the code but ONLY produce SQL code output. If the question is complex, consider using one or more CTE. Examine the DDL statements and answer this question: {output}')
