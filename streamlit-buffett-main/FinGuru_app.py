@@ -95,12 +95,7 @@ if authenticate_user():
               st.session_state.messages = []
 
         for message in st.session_state.messages:
-            role = st.chat_message(message["role"])
-            if role == "assistant":
-                avatar_val = "streamlit-buffett-main/assets/Jade FinG Logo.png"
-            else:
-                avatar_val = "streamlit-buffett-main/assets/Jade FinG Logo.png"
-            with st.chat_message(message["role"], avatar=avatar_val):
+            with st.chat_message(message["role"]):
                 st.markdown(message["content"], unsafe_allow_html = True)
         
         if prompt := str_input:
@@ -114,7 +109,7 @@ if authenticate_user():
                     # if the output doesn't work we will try one additional attempt to fix it
                     query_result = sf_query(output['result'])
                     if len(query_result) >= 1:
-                      with st.chat_message("assistant", avatar="streamlit-buffett-main/assets/Jade FinG Logo.png"):
+                      with st.chat_message("assistant"):
                         df_2 = pd.DataFrame(query_result)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
                         headers = df_2.columns
@@ -146,13 +141,7 @@ if authenticate_user():
               st.session_state.messages_1 = []
 
         for message in st.session_state.messages_1:
-            role = st.chat_message(message["role"])
-            avatar_val
-            if role == "assistant":
-                avatar_val = "streamlit-buffett-main/assets/Jade FinG Logo.png"
-            else:
-                avatar_val = "None"
-            with st.chat_message(message["role"], avatar=avatar_val):
+            with st.chat_message(message["role"]):
                 st.markdown(message["content"], unsafe_allow_html = True)
         
         if prompt1 := query:
@@ -160,7 +149,7 @@ if authenticate_user():
               # Add user message to chat history
             st.session_state.messages_1.append({"role": "user", "content": prompt1})
             try:
-                with st.chat_message("assistant", avatar="streamlit-buffett-main/assets/Jade FinG Logo.png"):
+                with st.chat_message("assistant"):
                   result = prompts.letter_chain(query)
                   st.write(result['result'])
                   st.session_state.messages_1.append({"role": "assistant", "content":result['result'] } )
