@@ -150,8 +150,8 @@ if authenticate_user():
                 avatar_val = "streamlit-buffett-main/assets/Jade FinG Logo.png"
             else:
                 avatar_val = "None"
-              with st.chat_message(message["role"], avatar=avatar_val):
-                  st.markdown(message["content"], unsafe_allow_html = True)
+            with st.chat_message(message["role"], avatar=avatar_val):
+                st.markdown(message["content"], unsafe_allow_html = True)
         
         if prompt1 := query:
             st.chat_message("user").markdown(prompt1, unsafe_allow_html = True)
