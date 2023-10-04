@@ -118,7 +118,7 @@ if authenticate_user():
                                 new_name = f"{name} ($ millions)"
                                 df_2.rename(columns={name : new_name}, inplace=True)
                         if len(df_2.index) > 2:
-                            st.bar_chart(df_2)
+                            st.line_chart(df_2)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
                         headers = df_2.columns
                         st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
