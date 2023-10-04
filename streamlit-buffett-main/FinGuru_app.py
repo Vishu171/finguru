@@ -113,11 +113,13 @@ if authenticate_user():
                     if len(query_result) >= 1:
                       with st.chat_message("assistant"):
                         df_2 = pd.DataFrame(query_result)
-                        df_2.columns = df_2.columns.str.replace('_', ' ')
                         for name in df_2.columns:
                             if name in column_list:
                                 new_name = f"{name} ($ millions)"
                                 df_2.rename(columns={name = new_name}, inplace=True)
+                        if len(df_2.columns) > 2:
+                            st.bar_chart(df_2)
+                        df_2.columns = df_2.columns.str.replace('_', ' ')
                         headers = df_2.columns
                         st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
