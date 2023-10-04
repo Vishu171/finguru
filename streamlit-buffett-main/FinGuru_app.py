@@ -138,7 +138,7 @@ if authenticate_user():
               
         **Some Sample Questions:**
       
-        - How many shareholders does JGSDL have?
+        - What are the operating expenses of the JGSDL for last 2 years?
         - What are the risks JGSDL is facing?
         
         """)
