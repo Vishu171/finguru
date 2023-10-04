@@ -71,13 +71,13 @@ if authenticate_user():
     with st.sidebar:
       image = Image.open("streamlit-buffett-main/assets/FinGPT.png")
       image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=280)
-      selected = option_menu( menu_title=None,
-      options=["Explore Company Statements", 'Explore Annual Reports'], 
+      selected = option_menu( menu_title="Explore",
+      options=["Company Statements", 'Annual Reports'], 
       icons=['database', 'filetype-pdf'],  
       default_index=0,
       styles={"container":{"font-family": "Garamond"},
         "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "grey"}})
-    if selected =='Explore Company Statements':
+    if selected =='Company Statements':
         str_input = st.chat_input("Enter your question:")
         st.markdown("""
         I am  Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across 2003 to 2022. Please ask me questions and I will try my level best to provide accurate responses.
