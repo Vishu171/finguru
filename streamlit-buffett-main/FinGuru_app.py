@@ -73,8 +73,7 @@ def sf_query(str_input):
     """
     performs snowflake query with caching
     """
-    data = conn.query(str_input)
-    
+    data = conn.query(str_input)    
     return data
 
 def format_func(option):
@@ -88,14 +87,11 @@ def creds_entered():
 
           elif st.session_state["streamlit_username"].strip() == username and st.session_state["streamlit_password"].strip() == password:
               st.session_state["authenticated"] = True
-
-
+              
 def authenticate_user():
       if "authenticated" not in st.session_state:
         buff, col, buff2 = st.columns([1,1,1])
-
-        #col.text_input('smaller text window:')
-        
+        #col.text_input('smaller text window:')        
         col.text_input(label="Username:", value="", key="streamlit_username", on_change=creds_entered) 
         col.text_input(label="Password", value="", key="streamlit_password", type="password", on_change=creds_entered)
         return False
@@ -108,12 +104,8 @@ def authenticate_user():
                   col.text_input(label="Password:", value="", key="streamlit_password", type="password", on_change=creds_entered)
                   return False
 
-
-
 if authenticate_user():
-
-    with st.sidebar:
-      
+    with st.sidebar:      
       image = Image.open("streamlit-buffett-main/assets/FinGPT.png")
       image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=280)
       
@@ -128,28 +120,23 @@ if authenticate_user():
         str_input = st.chat_input("Enter your question:")
         st.markdown("""
         I am  Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across 2003 to 2022. Please ask me questions and I will try my level best to provide accurate responses.
-          
-      
+                
           **Some Sample Questions:**
       
           - What is the net income of JGSDL in 2022?
           - Compare this year revenue of JGSDL with last year?
-        
-        
+                
         """)
         
         if "messages" not in st.session_state.keys():
               st.session_state.messages = []
-
         for message in st.session_state.messages:
               with st.chat_message(message["role"]):
-                  st.markdown(message["content"], unsafe_allow_html = True)
-        
+                  st.markdown(message["content"], unsafe_allow_html = True)  
         if prompt := str_input:
             st.chat_message("user").markdown(prompt, unsafe_allow_html = True)
               # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": prompt})
-
             try:
                 output = fs_chain(str_input)
                 try:
@@ -183,13 +170,9 @@ if authenticate_user():
       
         - How many shareholders does JGSDL have?
         - What are the risks JGSDL is facing?
-        
-        
-        
-        """)
-        
+                
+        """)        
         # Create a text input to edit the selected question
-        #query = st.chat_input('Enter the question:')
         if "messages_1" not in st.session_state.keys():
               st.session_state.messages_1 = []
 
@@ -201,16 +184,10 @@ if authenticate_user():
         if prompt1 := query:
             st.chat_message("user").markdown(prompt1, unsafe_allow_html = True)
               # Add user message to chat history
-            st.session_state.messages_1.append({"role": "user", "content": prompt1})
-            #query = st.text_input(label=f'✉️ Enter the question: ')
-            # Display the selected question and the edited question
-            
-            #st.write('Enter the question:', query)
-            #query = st.text_input("What would you like to ask Warren Buffett?")
-            
+            st.session_state.messages_1.append({"role": "user", "content": prompt1})          
+            # Display the selected question and the edited question                                
             try:
-                with st.chat_message("assistant"):
-                
+                with st.chat_message("assistant"):              
                   result = prompts.letter_chain(query)
                   st.write(result['result'])
                   st.session_state.messages_1.append({"role": "assistant", "content":result['result'] } )
@@ -218,5 +195,3 @@ if authenticate_user():
                 #st.write(result['source_documents'])
             except:
                 st.write("Please try to improve your question")
-
-
