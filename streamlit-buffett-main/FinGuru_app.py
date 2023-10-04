@@ -101,7 +101,7 @@ if authenticate_user():
       image = Image.open("streamlit-buffett-main/assets/FinGPT.png")            
       st.sidebar.markdown("\n\n")
         # Add your logo to the sidebar
-      st.sidebar.image("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/FinGPT.png", width=280)
+      st.sidebar.image("streamlit-buffett-main/assets/FinGPT.png", width=280)
       selected = option_menu( menu_title="Explore",
       menu_icon = "search",
       options=["  Company Statements", '  Annual Reports'], 
