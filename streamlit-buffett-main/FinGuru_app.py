@@ -72,6 +72,7 @@ if authenticate_user():
       image = Image.open("streamlit-buffett-main/assets/FinGPT.png")
       image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=280)
       selected = option_menu( menu_title="Explore",
+      menu_icon = "search",
       options=["Company Statements", 'Annual Reports'], 
       icons=['database', 'filetype-pdf'],  
       default_index=0,
