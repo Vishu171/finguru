@@ -96,7 +96,6 @@ if authenticate_user():
 
         for message in st.session_state.messages:
             role = st.chat_message(message["role"])
-            avatar_val
             if role == "assistant":
                 avatar_val = "streamlit-buffett-main/assets/Jade FinG Logo.png"
             else:
