@@ -129,7 +129,6 @@ if authenticate_user():
                     st.write(sf_query(output['result']))
             except:
                 st.session_state.messages.append({"role": "assistant", "content": "Please try to improve your question. Note this tab is for financial statement questions. Use Tab 2 to ask from Annual Reports ."})
-                st.session_state.messages.append({"role": "assistant", "content": f"Final errored query used:"})
                 #sst.write(output)
     else:
         query = st.chat_input("Enter your question:")
