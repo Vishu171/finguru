@@ -10,6 +10,9 @@ from streamlit_option_menu import option_menu
 
 st.set_page_config(layout="wide")
 
+username=st.secrets["streamlit_username"]
+password=st.secrets["streamlit_password"]
+
 # establish snowpark connection
 conn = st.experimental_connection("snowpark")
 
