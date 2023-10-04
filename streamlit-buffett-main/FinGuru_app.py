@@ -13,6 +13,7 @@ st.set_page_config(layout="wide")
 username=st.secrets["streamlit_username"]
 password=st.secrets["streamlit_password"]
 column_list = ['CASH_AND_EQUIVALENTS','SHORT_TERM_INVESTMENTS','CASH_AND_SHORT_TERM_INVESTMENTS','NET_RECEIVABLES','INVENTORY','TOTAL_CURRENT_ASSETS','PROPERTY_PLANT_EQUIPMENTNET','GOODWILL','INTANGIBLE_ASSETS','GOOD_WILL_AND_INTANGIBLE_ASSETS','LONG_TERM_INVESTMENTS','TAX_ASSETS','OTHER_NON_CURRENT_ASSETS','TOTAL_NON_CURRENT_ASSETS','OTHER_ASSETS','TOTAL_ASSETS','ACCOUNTS_PAYABLES','SHORT_TERM_DEBT','TAX_PAYABLES','OTHER_CURRENT_LIABILITIES','TOTAL_CURRENT_LIABILITIES','LONG_TERM_DEBT','DEFERRED_REVENUE_NONCURRENT','DEFERRED_TAX_LIABILITIES_NONCURRENT','OTHER_NONCURRENT_LIABILITIES','TOTAL_LIABILITIES','RETAINED_EARNINGS','ACCUMULATED_OTHER_COMPREHENSIVE_INCOME','OTHER_TOTAL_STOCKHOLDERS_EQUIT','TOTAL_STOCKHOLDERS_EQUITY','TOTAL_EQUITY','TOTAL_LIABILITIES_AND_STOCKHOLDERS_EQUITY','MINORITY_INTEREST','TOTAL_LIABILITIES_AND_TOTAL_EQUITY','TOTAL_INVESTMENTS','TOTAL_DEBT','NET_DEBT','NET_INCOME','DEPRECIATION_AND_AMORTIZATION','DEFERRED_INCOME_TAX','STOCK_BASED_COMPENSATION','CHANGE_IN_WORKING_CAPITAL','ACCOUNTS_RECEIVABLES','INVENTORY','ACCOUNTS_PAYABLES','OTHER_WORKING_CAPITAL','OTHER_NON_CASH_ITEMS','NET_OPERATING_ACTIVITIES','INVESTMENTS_IN_PROPERTY_PLANT_AND_EQUIPMENT','ACQUISITIONS','PURCHASES_OF_INVESTMENTS','SALES_OF_INVESTMENTS','OTHER_INVESTING_ACTIVITES','NET_INVESTING_ACTIVITES','DEBT_PAYMENT','COMMON_STOCK_ISSUED','COMMON_STOCK_REPURCHASED','DIVIDENDS_PAID','OTHER_FINANCING_ACTIVITES','NET_FINANCING_ACTIVITIES','NET_CHANGE_IN_CASH','OPERATING_CASH_FLOW','CAPITAL_EXPENDITURE','FREE_CASH_FLOW','REVENUE','COST_OF_REVENUE','GROSS_PROFIT','GROSS_PROFIT_RATIO','RESEARCH_AND_DEVELOPMENT_EXPENSES','SELLING_GENERAL_AND_ADMINISTRATIVE_EXPENSES','OPERATING_EXPENSES','COST_AND_EXPENSES','INTEREST_INCOME','INTEREST_EXPENSE','DEPRECIATION_AND_AMORTIZATION','EBITDA_EARNINGS_BEFORE_INTEREST_TAX_DEPRECATION_AND_AMORITZATION','OPERATING_INCOME','OTHER_INCOME_EXPENSES','INCOME_BEFORE_TAX','INCOME_TAX_EXPENSE','NET_INCOME','EPS_EARNINGS_PER_SHARE','EPS_EARNINGS_PER_SHARE_DILUTED','WEIGHTED_AVERAGE_SHARES_OUTSTANDING','WEIGHTED_AVERAGE_SHARES_OUTSTANDING_DILUTED']
+cutoff = 20
 
 # establish snowpark connection
 conn = st.experimental_connection("snowpark")
@@ -25,6 +26,22 @@ except:
 
 # adding this to test out caching
 st.cache_data(ttl=86400)
+
+def plot_financials(df_2, x, y, x_cutoff, title):
+    """"
+    helper to plot the altair financial charts
+    
+    return st.altair_chart(alt.Chart(df_2.head(x_cutoff)).mark_bar().encode(
+        x=x,
+        y=y
+        ).properties(title=title)
+    ) 
+    """
+    df_subset = df_2.head(x_cutoff)
+    # Create a bar chart using st.bar_chart()
+    return st.bar_chart(df_subset.set_index(x)[y])
+
+
 def fs_chain(str_input):
     """
     performs qa capability for a question using sql vector db store
@@ -42,6 +59,17 @@ def sf_query(str_input):
     """
     data = conn.query(str_input)
     return data
+
+
+css = """
+    <style>
+    /* Custom CSS to move the logo upwards */
+    .sidebar-content {
+        margin-top: -50px; /* Adjust the margin-top value as needed */
+    }
+    </style>
+    """
+st.markdown(css, unsafe_allow_html=True)
 
 def creds_entered():
     if len(st.session_state["streamlit_username"])>0 and len(st.session_state["streamlit_password"])>0:
@@ -70,17 +98,20 @@ def authenticate_user():
 
 if authenticate_user():
     with st.sidebar:
-      image = Image.open("streamlit-buffett-main/assets/FinGPT.png")
-      image = st.image('streamlit-buffett-main/assets/FinGPT.png',width=280)
+      image = Image.open("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/FinGPT.png")            
+      st.sidebar.markdown("\n\n")
+        # Add your logo to the sidebar
+      st.sidebar.image("/content/drive/MyDrive/NewSnowflake/streamlit-buffett-main/assets/FinGPT.png", width=280)
       selected = option_menu( menu_title="Explore",
       menu_icon = "search",
-      options=["Company Statements", 'Annual Reports'], 
+      options=["  Company Statements", '  Annual Reports'], 
       icons=['database', 'filetype-pdf'],  
       default_index=0,
       styles={"container":{"font-family": "Garamond"},
         "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "--hover-color": "grey"}})
     if selected =='Company Statements':
         str_input = st.chat_input("Enter your question:")
+        
         st.markdown("""
         I am  Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across 2003 to 2022. Please ask me questions and I will try my level best to provide accurate responses.
           
@@ -117,11 +148,17 @@ if authenticate_user():
                             if name in column_list:
                                 new_name = f"{name} ($ millions)"
                                 df_2.rename(columns={name : new_name}, inplace=True)
-                        if len(df_2.index) > 2:
-                            st.line_chart(df_2)
+                        
+                            #st.bar_chart(df_2)
+                        col1, col2 = st.columns(2)
                         df_2.columns = df_2.columns.str.replace('_', ' ')
                         headers = df_2.columns
-                        st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
+                        with col1:
+                         st.markdown(tabulate(df_2, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
+                        if len(df_2.index) >2 :
+                            title_name = df_2.columns[0]+'-'+df_2.columns[1]
+                            with col2:
+                             plot_financials(df_2,df_2.columns[0],df_2.columns[1], cutoff,title_name)
                       st.session_state.messages.append({"role": "assistant", "content": tabulate(df_2, tablefmt="html",headers=headers,showindex=False)})
                 except:
                     st.session_state.messages.append({"role": "assistant", "content": "The first attempt didn't pull what you were needing. Trying again..."})
@@ -163,5 +200,3 @@ if authenticate_user():
 
             except:
                 st.write("Please try to improve your question")
-
-
