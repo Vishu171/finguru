@@ -99,7 +99,7 @@ if authenticate_user():
             if role == "assistant":
                 avatar_val = "streamlit-buffett-main/assets/Jade FinG Logo.png"
             else:
-                avatar_val = "None"
+                avatar_val = "🤖"
             with st.chat_message(message["role"], avatar=avatar_val):
                 st.markdown(message["content"], unsafe_allow_html = True)
         
