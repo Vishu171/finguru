@@ -118,7 +118,7 @@ if authenticate_user():
                 df_str = message["content"]
                 if role == "user":
                     st.markdown(message["content"], unsafe_allow_html = True)
-                    contiue
+                    continue
                 csv = StringIO(df_str)
                 df_data = pd.read_csv(csv, sep=',')
                 col1, col2 = st.columns(2)
