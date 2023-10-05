@@ -120,12 +120,15 @@ if authenticate_user():
                 col1, col2 = st.columns(2)
                 df_data.columns = df_data.columns.str.replace('_', ' ')
                 headers = df_data.columns
-                with col1:
-                    st.markdown(tabulate(df_data, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
-                    if len(df_data.index) >2 & len(df_data.columns) == 2:
-                        title_name = df_data.columns[0]+'-'+df_data.columns[1]
-                        with col2:
-                            plot_financials(df_data,df_data.columns[0],df_data.columns[1], cutoff,title_name)
+                if df_str == "user":
+                    st.markdown(message["content"], unsafe_allow_html = True)
+                else:
+                    with col1:
+                        st.markdown(tabulate(df_data, tablefmt="html",headers=headers,showindex=False), unsafe_allow_html = True) 
+                        if len(df_data.index) >2 & len(df_data.columns) == 2:
+                            title_name = df_data.columns[0]+'-'+df_data.columns[1]
+                            with col2:
+                                plot_financials(df_data,df_data.columns[0],df_data.columns[1], cutoff,title_name)
         
         if prompt := str_input:
             st.chat_message("user").markdown(prompt, unsafe_allow_html = True)
