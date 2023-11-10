@@ -73,7 +73,7 @@ def get_pinecone():
         environment=st.secrets['pinecone_env'] 
         )
     
-    index_name = "buffett"
+    index_name = "jgsdl"
     embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_key"])
     return Pinecone.from_existing_index(index_name,embeddings)
 
