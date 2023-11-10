@@ -44,10 +44,12 @@ SQL: ```sql ``` \n
 FS_PROMPT = PromptTemplate(input_variables=["question", "context"], template=FS_TEMPLATE, )
 
 LETTER_TEMPLATE = """ You are task is to summarize the question and retrieve data from PDF.
+
 Provide an answer based on this retreival, and if you can't find anything relevant, just say "I'm sorry, I couldn't find that."
+
 {context}
 Question: {question}
-Anwer:
+Answer:
  
 """
 LETTER_PROMPT = PromptTemplate(input_variables=["question", "context"], template=LETTER_TEMPLATE, )
