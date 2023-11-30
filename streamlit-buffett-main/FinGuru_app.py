@@ -86,8 +86,8 @@ def authenticate_user():
 
 if authenticate_user():
     with st.sidebar:
-      image = Image.open("streamlit-buffett-main/assets/jadefingeniusnewlogo.png")
-      image = st.image('streamlit-buffett-main/assets/jadefingeniusnewlogo.png',width=270)
+      image = Image.open("streamlit-buffett-main/assets/jadeai.png")
+      image = st.image('streamlit-buffett-main/assets/jadeai.png',width=270)
       selected = option_menu( menu_title="Explore",
       menu_icon = "search",
       options=["Company Statements", 'Annual Reports'], 
