@@ -139,7 +139,8 @@ if authenticate_user():
 
             try:
                 output = fs_chain(str_input)
-                st.write(output['result'])
+                with st.expander("The SQL query used for above question is:"):
+                   st.write(output['result'])
                 try:
                     # if the output doesn't work we will try one additional attempt to fix it
                     query_result = sf_query(output['result'])
