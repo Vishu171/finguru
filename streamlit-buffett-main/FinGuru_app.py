@@ -149,7 +149,7 @@ if authenticate_user():
                         df_2 = pd.DataFrame(query_result)
                         for name in df_2.columns:
                             if name in column_list:
-                                new_name = f"{name} ($ millions)"
+                                new_name = f"{name} ($ thousands)"
                                 df_2.rename(columns={name : new_name}, inplace=True)
                         
                             #st.bar_chart(df_2) 
