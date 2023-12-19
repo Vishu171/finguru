@@ -88,14 +88,14 @@ if authenticate_user():
     with st.sidebar:
       image = Image.open("streamlit-buffett-main/assets/jadefinance.png")
       image = st.image('streamlit-buffett-main/assets/jadefinance.png',width=270)
-      selected = option_menu( menu_title="Explore",
+      selected = option_menu( menu_title="Menu",
       menu_icon = "search",
-      options=["Company Statements", 'Annual Reports'], 
+      options=["Finance Data", 'Annual Reports'], 
       icons=['database', 'filetype-pdf'],  
       default_index=0,
       styles={"container":{"font-family": "Garamond"},
         "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "--hover-color": "grey"}})
-    if selected =='Company Statements':
+    if selected =='Finance Data':
         str_input = st.chat_input("Enter your question:")
         st.markdown("""
         I am  Finance Assistant of your company. I possess the ability to extract information from your company's financial statements like balance sheet, income statements, etc spanning across 2003 to 2022. Please ask me questions and I will try my level best to provide accurate responses.
