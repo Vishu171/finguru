@@ -94,7 +94,7 @@ if authenticate_user():
       icons=['database', 'filetype-pdf'],  
       default_index=0,
       styles={"container":{"font-family": "Garamond"},
-        "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "--hover-color": "grey"}})
+        "nav-link": {"font-family": "Source Sans Pro"},"font-size": "12px", "text-align": "left", "margin":"0px", "--hover-color": "grey"})
     if selected =='Finance Data':
         str_input = st.chat_input("Enter your question:")
         st.markdown("""
